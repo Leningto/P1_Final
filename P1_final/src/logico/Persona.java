@@ -2,7 +2,7 @@ package logico;
 
 import java.util.ArrayList;
 
-public class Persona {
+public abstract class Persona {
 	protected ArrayList<Curriculum> curriculum;
 	protected String Nombre, Cedula, telefono, direccion;;
 
