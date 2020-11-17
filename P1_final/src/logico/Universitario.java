@@ -5,9 +5,9 @@ import java.util.ArrayList;
 public class Universitario extends Persona {
 	private String carreraUniv;
 
-	public Universitario(ArrayList<Curriculum> curriculum, String nombre, String cedula, String telefono,
-			String direccion, String carreraUniv) {
-		super(curriculum, nombre, cedula, telefono, direccion);
+	public Universitario(String nombre, String cedula, String telefono, String direccion, boolean estado,
+			String nacionalidad, String carreraUniv) {
+		super(nombre, cedula, telefono, direccion, estado, nacionalidad);
 		this.carreraUniv = carreraUniv;
 	}
 

@@ -5,9 +5,10 @@ import java.util.ArrayList;
 public class Obrero extends Persona {
 	private String Habilidades;/* habilidades : plomero, electricista,carpintero,construcctor */
 
-	public Obrero(ArrayList<Curriculum> curriculum, String nombre, String cedula, String telefono, String direccion,
+	
+	public Obrero(String nombre, String cedula, String telefono, String direccion, boolean estado, String nacionalidad,
 			String habilidades) {
-		super(curriculum, nombre, cedula, telefono, direccion);
+		super(nombre, cedula, telefono, direccion, estado, nacionalidad);
 		Habilidades = habilidades;
 	}
 

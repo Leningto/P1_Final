@@ -126,7 +126,6 @@ public class BolsaLaboral {
 		}
 		return Existe;
 	}
-	
 
 	/*
 	 * insertar vacante y verificar que no existe otro igual;
@@ -154,5 +153,8 @@ public class BolsaLaboral {
 		}
 		return Existe;
 	}
+	
+	
+	
 
 }
