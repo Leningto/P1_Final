@@ -6,15 +6,14 @@ public class Empresa {
 	private String codigo, nombre, telefono, direccion, nombreCEO;
 	private ArrayList<Vacante> vacantes;
 
-	public Empresa(String codigo, String nombre, String telefono, String direccion, String nombreCEO,
-			ArrayList<Vacante> vacantes) {
+	public Empresa(String codigo, String nombre, String telefono, String direccion, String nombreCEO) {
 		super();
 		this.codigo = codigo;
 		this.nombre = nombre;
 		this.telefono = telefono;
 		this.direccion = direccion;
 		this.nombreCEO = nombreCEO;
-		this.vacantes = vacantes;
+		this.vacantes = new ArrayList<>();
 	}
 
 	public String getCodigo() {
@@ -63,6 +62,13 @@ public class Empresa {
 
 	public void setVacantes(ArrayList<Vacante> vacantes) {
 		this.vacantes = vacantes;
+	}
+	
+	
+	
+	
+	public void insertarVacante(Vacante vaca) {
+		vacantes.add(vaca);
 	}
 
 }

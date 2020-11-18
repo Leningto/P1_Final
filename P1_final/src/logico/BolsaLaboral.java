@@ -173,17 +173,20 @@ public class BolsaLaboral {
 		}
 		return insertado;
 	}
+	public void insertarCuerriculom(Curriculum CURRI) {
+		curriculums.add(CURRI);
+	}
 	
 	
 	//mach de empresa a trabajador
 	public Mach buscarEmpleado(Vacante vacante){
-		Curriculum aux=null;
+		System.out.println("esoty aqui");
 		Mach nuevo=null;
 		Mach ELpapa=null;
 		ArrayList<Mach>maches=new ArrayList<>();
 		for(Persona persona:personas) {
 			if(persona instanceof Obrero) {
-				if(vacante.getTipo_empleado().equalsIgnoreCase("brero")) {
+				if(vacante.getTipo_empleado().equalsIgnoreCase("Obrero")) {
 					nuevo=persona.buscarCurriculums(vacante);
 				}
 			}
@@ -203,6 +206,9 @@ public class BolsaLaboral {
 			}
 			
 			ELpapa=buscarmayorIndiceDeMACHES(maches);
+			if(ELpapa!=null) {
+				System.out.println("no es null");
+			}
 		}
 		return ELpapa;
 	}
@@ -218,7 +224,6 @@ public class BolsaLaboral {
 			}
 		}
 		return aux;
-		
 	}
 
 }
