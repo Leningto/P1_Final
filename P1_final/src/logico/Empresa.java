@@ -3,16 +3,26 @@ package logico;
 import java.util.ArrayList;
 
 public class Empresa {
-	private String nombre, telefono, direccion, nombreCEO;
+	private String codigo, nombre, telefono, direccion, nombreCEO;
 	private ArrayList<Vacante> vacantes;
 
-	public Empresa(String nombre, String telefono, String direccion, String nombreCEO, ArrayList<Vacante> vacantes) {
+	public Empresa(String codigo, String nombre, String telefono, String direccion, String nombreCEO,
+			ArrayList<Vacante> vacantes) {
 		super();
+		this.codigo = codigo;
 		this.nombre = nombre;
 		this.telefono = telefono;
 		this.direccion = direccion;
 		this.nombreCEO = nombreCEO;
 		this.vacantes = vacantes;
+	}
+
+	public String getCodigo() {
+		return codigo;
+	}
+
+	public void setCodigo(String codigo) {
+		this.codigo = codigo;
 	}
 
 	public String getNombre() {

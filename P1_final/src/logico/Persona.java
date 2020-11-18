@@ -19,6 +19,16 @@ public abstract class Persona {
 	}
 	
 
+	public String getNacionalidad() {
+		return nacionalidad;
+	}
+
+
+	public void setNacionalidad(String nacionalidad) {
+		this.nacionalidad = nacionalidad;
+	}
+
+
 	public String getDireccion() {
 		return direccion;
 	}
@@ -79,5 +89,33 @@ public abstract class Persona {
 		this.estado = estado;
 	}
 
+	public Mach buscarCurriculums(Vacante vacante) {
+		Mach aux=null;
+		Curriculum aux1=null;
+		int indiceMayor=0;
+		int indiceMenor=0;
+		int i =0;
+		while(i<curriculum.size()) {
+			indiceMenor=0;
+			if(curriculum.get(i).getTipo_empleo().equalsIgnoreCase(vacante.getTipo_de_empleo())) {
+				indiceMenor++;
+				if(curriculum.get(i).getSexo().equalsIgnoreCase(vacante.getSexo())) {
+					indiceMenor++;
+				}
+				if(curriculum.get(i).getIdioma().equalsIgnoreCase(vacante.getIdioma())) {
+					indiceMenor++;
+				}
+				if(curriculum.get(i).getLicencia_conducir().equalsIgnoreCase(vacante.getLicenciaConducir())) {
+					indiceMenor++;
+				}
+			}
+			if(indiceMenor>indiceMayor) {
+				aux1=curriculum.get(i);
+			}
+			i++;
+		}
+		aux=new Mach(aux1,indiceMayor);
+		return aux;
+	}
 
 }

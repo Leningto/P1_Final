@@ -2,6 +2,9 @@ package logico;
 
 import java.util.ArrayList;
 
+import javax.crypto.Mac;
+import javax.sound.midi.Soundbank;
+
 public class BolsaLaboral {
 	private ArrayList<Persona> personas;
 	private ArrayList<Empresa> empresas;
@@ -21,6 +24,47 @@ public class BolsaLaboral {
 		this.codCurriculums = 1;
 		this.codVacante = 1;
 	}
+	
+
+	public ArrayList<Persona> getPersonas() {
+		return personas;
+	}
+
+
+	public void setPersonas(ArrayList<Persona> personas) {
+		this.personas = personas;
+	}
+
+
+	public static int getCodEmpresa() {
+		return CodEmpresa;
+	}
+
+
+	public static void setCodEmpresa(int codEmpresa) {
+		CodEmpresa = codEmpresa;
+	}
+
+
+	public static int getCodVacante() {
+		return codVacante;
+	}
+
+
+	public static void setCodVacante(int codVacante) {
+		BolsaLaboral.codVacante = codVacante;
+	}
+
+
+	public static int getCodCurriculums() {
+		return codCurriculums;
+	}
+
+
+	public static void setCodCurriculums(int codCurriculums) {
+		BolsaLaboral.codCurriculums = codCurriculums;
+	}
+
 
 	public ArrayList<Persona> getPresonas() {
 		return personas;
@@ -53,108 +97,128 @@ public class BolsaLaboral {
 	public void setVancates(ArrayList<Vacante> vancates) {
 		this.vancates = vancates;
 	}
-
-	public boolean insertarCleinte(Persona nuevocleinte) {
-		boolean insertar = false;
-		if (!personaExiste(nuevocleinte.getCedula())) {
-			personas.add(nuevocleinte);
-			insertar = true;
+	
+	
+	
+	public boolean insertarUnsuario(Persona persona) {
+		boolean insertado=false;
+		if(persona!=null&& !personaExiste(persona)) {
+			personas.add(persona);
+			insertado=true;
 		}
-		return insertar;
+		return insertado;
 	}
-
-	public boolean personaExiste(String cedula) {
-		boolean Existe = false;
-		int i = 0;
-		while (i < personas.size() && !Existe) {
-			if (personas.get(i).getCedula().equalsIgnoreCase(cedula)) {
-				Existe = true;
-			}
-			i++;
-		}
-		return Existe;
-	}
-
-	/*
-	 * insertar empresa y verificar que ella no exista;
-	 */
-	public boolean insertarEmpresa(Empresa nuevaEmpresa) {
-		boolean insertar = false;
-		if (!EmpresaExiste(nuevaEmpresa)) {
-			empresas.add(nuevaEmpresa);
-			insertar = true;
-			CodEmpresa++;
-		}
-		return insertar;
-	}
-
-	public boolean EmpresaExiste(Empresa nuevaEmpresa) {
-		// TODO Auto-generated method stub
-		int i = 0;
-		boolean existe = false;
-		while (i < empresas.size() && !existe) {
-			if (empresas.get(i).equals(nuevaEmpresa)) {
-				existe = true;
-			}
-			i++;
-		}
-		return existe;
-	}
-
-	/*
-	 * insertar curriblums y vereifiar que no existe ese le mismo.
-	 */
-	public boolean insetarCurriculum(Curriculum curriculum) {
-		boolean insertar = false;
-		if (!CurriculumExiste(curriculum)) {
-			curriculums.add(curriculum);
-			insertar = true;
-			codCurriculums++;
-		}
-		return insertar;
-	}
-
-	public boolean CurriculumExiste(Curriculum curriculum) {
-		// TODO Auto-generated method stub
-		boolean Existe = false;
-		int i = 0;
-		while (i < curriculums.size() && !Existe) {
-			if (curriculums.get(i).equals(curriculum)) {
-				Existe = true;
-			}
-			i++;
-		}
-		return Existe;
-	}
-
-	/*
-	 * insertar vacante y verificar que no existe otro igual;
-	 */
-	public boolean insertarVacante(Vacante nuevaVacante) {
-		boolean insertar = false;
-		if (!VancanteExiste(nuevaVacante)) {
-			vancates.add(nuevaVacante);
-			insertar = true;
-			codVacante++;
-
-		}
-		return insertar;
-	}
-
-	private boolean VancanteExiste(Vacante nuevaVacante) {
-		// TODO Auto-generated method stub
-		boolean Existe = false;
-		int i = 0;
-		while (i < vancates.size() && !Existe) {
-			if (vancates.get(i).equals(nuevaVacante)) {
-				Existe = true;
+	public boolean personaExiste(Persona persona) {
+		int i=0;
+		boolean Existe=false;
+		while(i<personas.size()&&!Existe) {
+			if(personas.get(i).getCedula().equalsIgnoreCase(persona.getCedula())) {
+				Existe=true;
 			}
 			i++;
 		}
 		return Existe;
 	}
 	
+	public boolean InsertarSolicitudPERSONA(Curriculum curri) {
+		boolean insertado=false,Existe=false;
+		
+		if(curri!=null) {
+			int i=0;
+			while(i<curriculums.size()&&!Existe) {
+				if(curriculums.get(i).equals(curri)) {
+					Existe=true;
+				}
+				i++;
+			}
+			if(Existe==false) {
+				curriculums.add(curri);
+				insertado=true;
+			}
+		}
+		return insertado;
+	}
 	
 	
+	public boolean InsertarEmpreza(Empresa empresa) {
+		boolean insertado=false;
+		Empresa aux=buscarEmpresa(empresa.getCodigo());
+		if(aux==null) {
+			empresas.add(empresa);
+			insertado=true;
+		}
+		return insertado;
+	}
+
+
+	private Empresa buscarEmpresa(String codigo) {
+		int i=0;
+		boolean encontrado=false;
+		Empresa aux=null;
+		while(i<empresas.size()&&!encontrado) {
+			if(empresas.get(i).getCodigo().equalsIgnoreCase(codigo)) {
+				aux=empresas.get(i);
+				encontrado=true;
+			}
+			i++;
+		}
+		return aux;
+	}
+	
+	public boolean InsertarSolicitudVacante(Vacante vancante) {
+		boolean insertado=false;
+		if(vancante!=null) {
+			vancates.add(vancante);
+			insertado=true;
+		}
+		return insertado;
+	}
+	
+	
+	//mach de empresa a trabajador
+	public Mach buscarEmpleado(Vacante vacante){
+		Curriculum aux=null;
+		Mach nuevo=null;
+		Mach ELpapa=null;
+		ArrayList<Mach>maches=new ArrayList<>();
+		for(Persona persona:personas) {
+			if(persona instanceof Obrero) {
+				if(vacante.getTipo_empleado().equalsIgnoreCase("brero")) {
+					nuevo=persona.buscarCurriculums(vacante);
+				}
+			}
+			if(persona instanceof Tecnico) {
+				if(vacante.getTipo_empleado().equalsIgnoreCase("Tecnico")) {
+					nuevo=persona.buscarCurriculums(vacante);
+				}
+			}
+			if(persona instanceof Universitario) {
+				if(vacante.getTipo_empleado().equalsIgnoreCase("Universitario")) {
+					nuevo=persona.buscarCurriculums(vacante);
+				}
+			}
+			
+			if(nuevo.getIdice()>0) {
+				maches.add(nuevo);
+			}
+			
+			ELpapa=buscarmayorIndiceDeMACHES(maches);
+		}
+		return ELpapa;
+	}
+
+
+	public Mach buscarmayorIndiceDeMACHES(ArrayList<Mach> maches) {
+		// TODO Auto-generated method stub
+		Mach aux=null;
+		int elpapa=0;
+		for(int i=0;i<maches.size();i++) {
+			if(maches.get(i).getIdice()>elpapa){
+				aux=maches.get(i);
+			}
+		}
+		return aux;
+		
+	}
 
 }
