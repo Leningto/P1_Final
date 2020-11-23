@@ -20,4 +20,10 @@ public class Obrero extends Persona {
 		Habilidades = habilidades;
 	}
 
+	@Override
+	public String INTERIOR() {
+		// TODO Auto-generated method stub
+		return Habilidades;
+	}
+
 }

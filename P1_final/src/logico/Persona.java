@@ -4,50 +4,44 @@ import java.util.ArrayList;
 
 public abstract class Persona {
 	protected ArrayList<Curriculum> curriculum;
-	protected String Nombre, Cedula, telefono,direccion,nacionalidad;
-	protected boolean estado;//contratado 
+	protected String Nombre, Cedula, telefono, direccion, nacionalidad;
+	protected boolean estado;// contratado
 
-	public Persona(String nombre, String cedula, String telefono, String direccion, boolean estado,String nacionalidad) {
+	public Persona(String nombre, String cedula, String telefono, String direccion, boolean estado,
+			String nacionalidad) {
 		super();
 		this.curriculum = new ArrayList<>();
 		Nombre = nombre;
 		Cedula = cedula;
 		this.telefono = telefono;
-		this.direccion=direccion;
+		this.direccion = direccion;
 		this.estado = estado;
-		this.nacionalidad=nacionalidad;
+		this.nacionalidad = nacionalidad;
 	}
-	
 
 	public String getNacionalidad() {
 		return nacionalidad;
 	}
 
-
 	public void setNacionalidad(String nacionalidad) {
 		this.nacionalidad = nacionalidad;
 	}
-
 
 	public String getDireccion() {
 		return direccion;
 	}
 
-
 	public void setDireccion(String direccion) {
 		this.direccion = direccion;
 	}
-
 
 	public String getNacionalida() {
 		return nacionalidad;
 	}
 
-
 	public void setNacionalida(String nacionalida) {
 		this.nacionalidad = nacionalida;
 	}
-
 
 	public ArrayList<Curriculum> getCurriculum() {
 		return curriculum;
@@ -88,43 +82,46 @@ public abstract class Persona {
 	public void setEstado(boolean estado) {
 		this.estado = estado;
 	}
+
 	public void insertarCurriculums(Curriculum curri) {
 		curriculum.add(curri);
 	}
 
+	public abstract String INTERIOR();
+
 	public Mach buscarCurriculums(Vacante vacante) {
-		Mach aux=null;
-		Curriculum aux1=null;
-		int indiceMayor=0;
-		int indiceMenor=0;
-		int i =0;
-		System.out.println(curriculum.size());
-		while(i<curriculum.size()) {
-			indiceMenor=0;
-			System.out.println("dentro del bucle");
-			if(curriculum.get(i).getTipo_empleo().equalsIgnoreCase(vacante.getTipo_de_empleo())) {
+		Mach aux = null;
+		Curriculum aux1 = new Curriculum("", "", "", "", "", "", "", "", "", "");
+		int indiceMayor = 0;
+		int indiceMenor = 0;
+		int i = 0;
+		while (i < curriculum.size()) {
+			indiceMenor = 0;
+			System.out.println("dentro del bucle:" + curriculum.size());
+			if (curriculum.get(i).getTipo_empleo().equalsIgnoreCase(vacante.getTipo_de_empleo())) {
 				indiceMenor++;
 				System.out.println("aqui");
-				if(curriculum.get(i).getSexo().equalsIgnoreCase(vacante.getSexo())) {
-					indiceMenor++;
-					System.out.println("aqui");
-				}
-				if(curriculum.get(i).getIdioma().equalsIgnoreCase(vacante.getIdioma())) {
-					indiceMenor++;
-					System.out.println("aqui");
-				}
-				if(curriculum.get(i).getLicencia_conducir().equalsIgnoreCase(vacante.getLicenciaConducir())) {
-					indiceMenor++;
-					System.out.println("aqui");
-				}
 			}
-			if(indiceMenor>indiceMayor) {
-				aux1=curriculum.get(i);
-				indiceMayor=indiceMenor;
+			if (curriculum.get(i).getSexo().equalsIgnoreCase(vacante.getSexo())) {
+				indiceMenor++;
+				System.out.println("aqui");
+			}
+			if (curriculum.get(i).getIdioma().equalsIgnoreCase(vacante.getIdioma())) {
+				indiceMenor++;
+				System.out.println("aqui");
+			}
+			if (curriculum.get(i).getLicencia_conducir().equalsIgnoreCase(vacante.getLicenciaConducir())) {
+				indiceMenor++;
+				System.out.println("aqui");
+			}
+
+			if (indiceMenor > indiceMayor) {
+				aux1 = curriculum.get(i);
+				indiceMayor = indiceMenor;
 			}
 			i++;
 		}
-		aux=new Mach(aux1,indiceMayor);
+		aux = new Mach(aux1, indiceMayor);
 		return aux;
 	}
 

@@ -21,4 +21,10 @@ public class Tecnico extends Persona {
 		this.area_desarrollo = area_desarrollo;
 	}
 
+	@Override
+	public String INTERIOR() {
+		// TODO Auto-generated method stub
+		return area_desarrollo;
+	}
+
 }

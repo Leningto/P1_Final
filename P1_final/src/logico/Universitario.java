@@ -19,4 +19,10 @@ public class Universitario extends Persona {
 		this.carreraUniv = carreraUniv;
 	}
 
+	@Override
+	public String INTERIOR() {
+		
+		return carreraUniv;
+	}
+
 }

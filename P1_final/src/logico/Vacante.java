@@ -1,19 +1,18 @@
 package logico;
 
-public class Vacante {
+public abstract class Vacante {
 	private String codigoSoli;
 	private String Puesto_trabajo;
-	private String tipo_de_empleo, tipo_empleado;// tipo_empleado {universitario, tecnico, obrero}
+	private String tipo_de_empleo;
 	private String idioma;
 	private String licenciaConducir, direccion, Sexo;
 
-	public Vacante(String codigoSoli, String puesto_trabajo, String tipo_de_empleo, String tipo_empleado, String idioma,
+	public Vacante(String codigoSoli, String puesto_trabajo, String tipo_de_empleo, String idioma,
 			String licenciaConducir, String direccion, String sexo) {
 		super();
 		this.codigoSoli = codigoSoli;
 		Puesto_trabajo = puesto_trabajo;
 		this.tipo_de_empleo = tipo_de_empleo;
-		this.tipo_empleado = tipo_empleado;
 		this.idioma = idioma;
 		this.licenciaConducir = licenciaConducir;
 		this.direccion = direccion;
@@ -42,14 +41,6 @@ public class Vacante {
 
 	public void setTipo_de_empleo(String tipo_de_empleo) {
 		this.tipo_de_empleo = tipo_de_empleo;
-	}
-
-	public String getTipo_empleado() {
-		return tipo_empleado;
-	}
-
-	public void setTipo_empleado(String tipo_empleado) {
-		this.tipo_empleado = tipo_empleado;
 	}
 
 	public String getIdioma() {
