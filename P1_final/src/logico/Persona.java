@@ -100,20 +100,24 @@ public abstract class Persona {
 			System.out.println("dentro del bucle:" + curriculum.size());
 			if (curriculum.get(i).getTipo_empleo().equalsIgnoreCase(vacante.getTipo_de_empleo())) {
 				indiceMenor++;
-				System.out.println("aqui");
+				//System.out.println(indiceMenor);
 			}
+			//System.out.println(indiceMenor);
 			if (curriculum.get(i).getSexo().equalsIgnoreCase(vacante.getSexo())) {
 				indiceMenor++;
-				System.out.println("aqui");
+				//System.out.println(indiceMenor);
 			}
+			//System.out.println(indiceMenor);
 			if (curriculum.get(i).getIdioma().equalsIgnoreCase(vacante.getIdioma())) {
 				indiceMenor++;
-				System.out.println("aqui");
+				//System.out.println(indiceMenor);
 			}
+			System.out.println(indiceMenor);
 			if (curriculum.get(i).getLicencia_conducir().equalsIgnoreCase(vacante.getLicenciaConducir())) {
 				indiceMenor++;
-				System.out.println("aqui");
+				//System.out.println(indiceMenor);
 			}
+			//System.out.println(indiceMenor);
 
 			if (indiceMenor > indiceMayor) {
 				aux1 = curriculum.get(i);
