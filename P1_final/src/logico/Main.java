@@ -16,7 +16,7 @@ public class Main {
 
 		Vacante vaca = new vancanteUniversitario("V-" + bl.getCodVacante(), "director", "parcial", "espaniol", "si",
 				"LR", "masculino", "sistema");
-		Empresa NUEVA = new Empresa("E-" + bl.getCodEmpresa(), "stgomaching", "123", "papaupa", "Jose Soto");
+		Empresa NUEVA = new Empresa("E-" + bl.getCodEmpresa(), "stgomaching", "123", "papaupa", "Jose Soto","1234");//el ultimo es el RNC
 		Vacante vac = new vacanteTecnico("V-" + bl.getCodVacante(), "director", "parcial", "espaniol", "si", "LR",
 				"Masculino", "maquina");
 

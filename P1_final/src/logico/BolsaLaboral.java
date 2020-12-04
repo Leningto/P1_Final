@@ -10,6 +10,7 @@ public class BolsaLaboral {
 	private ArrayList<Empresa> empresas;
 	private ArrayList<Curriculum> curriculums;
 	private ArrayList<Vacante> vancates;
+	private static BolsaLaboral bolsa=null;
 	private static int CodEmpresa;
 	private static int codVacante;
 	private static int codCurriculums;
@@ -24,7 +25,18 @@ public class BolsaLaboral {
 		this.codCurriculums = 1;
 		this.codVacante = 1;
 	}
+	public static BolsaLaboral getInstance() {
+		if (bolsa == null) {
+			bolsa = new BolsaLaboral();
+		}
+		return bolsa;
+	}
 
+	public static void setBolsa(BolsaLaboral temp) {
+		
+		//Queseria.queseria = queseria;
+		BolsaLaboral.bolsa=temp;
+	}
 	public ArrayList<Persona> getPersonas() {
 		return personas;
 	}
@@ -228,5 +240,7 @@ public class BolsaLaboral {
 		}
 		return aux;
 	}
+
+	
 
 }
