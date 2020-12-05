@@ -3,6 +3,7 @@ package visiual;
 import java.awt.BorderLayout;
 import java.awt.FlowLayout;
 
+import javax.swing.AbstractButton;
 import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.JPanel;
@@ -15,15 +16,27 @@ import javax.swing.JTextField;
 import javax.swing.JRadioButton;
 import javax.swing.JComboBox;
 import java.awt.SystemColor;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class RegistrarUsuario extends JDialog {
 
 	private final JPanel contentPanel = new JPanel();
-	private JTextField textField;
-	private JTextField textField_1;
-	private JTextField textField_2;
-	private JTextField textField_3;
-	private JTextField textField_4;
+	private JTextField txtCedula;
+	private JTextField txtNombre;
+	private JTextField txtNacionalidad;
+	private JTextField txtDireccion;
+	private JTextField txtTelefono;
+	private JRadioButton rdbtnTecnico;
+	private JRadioButton rdbtnObrero;
+	private JLabel lblCarrera;
+	private JComboBox cbxCarrera;
+	private JLabel lblAreaDesarrollo;
+	private JComboBox cbxAreaDesarrollo;
+	private JLabel lblHabilidades;
+	private JComboBox cbxHabilidades;
+	private JPanel panelActividad;
+	private JRadioButton rdbtUniversitario;
 
 	/**
 	 * Launch the application.
@@ -56,109 +69,151 @@ public class RegistrarUsuario extends JDialog {
 			contentPanel.add(panel);
 			panel.setLayout(null);
 			{
-				JLabel lblNewLabel = new JLabel("C\u00E9dula:");
-				lblNewLabel.setBounds(10, 29, 50, 23);
-				panel.add(lblNewLabel);
+				JLabel lblCedula = new JLabel("C\u00E9dula:");
+				lblCedula.setBounds(10, 29, 50, 23);
+				panel.add(lblCedula);
 			}
 			
-			textField = new JTextField();
-			textField.setBounds(10, 57, 120, 23);
-			panel.add(textField);
-			textField.setColumns(10);
+			txtCedula = new JTextField();
+			txtCedula.setBounds(10, 57, 120, 23);
+			panel.add(txtCedula);
+			txtCedula.setColumns(10);
 			
-			JLabel lblNewLabel_1 = new JLabel("Nombre:");
-			lblNewLabel_1.setBounds(10, 85, 50, 23);
-			panel.add(lblNewLabel_1);
+			JLabel lblNombre = new JLabel("Nombre:");
+			lblNombre.setBounds(10, 85, 50, 23);
+			panel.add(lblNombre);
 			
-			textField_1 = new JTextField();
-			textField_1.setBounds(10, 113, 150, 23);
-			panel.add(textField_1);
-			textField_1.setColumns(10);
+			txtNombre = new JTextField();
+			txtNombre.setBounds(10, 113, 150, 23);
+			panel.add(txtNombre);
+			txtNombre.setColumns(10);
 			
-			JLabel lblNewLabel_2 = new JLabel("Nacionalidad:");
-			lblNewLabel_2.setBounds(10, 141, 82, 23);
-			panel.add(lblNewLabel_2);
+			JLabel lblNacionalidad = new JLabel("Nacionalidad:");
+			lblNacionalidad.setBounds(10, 141, 82, 23);
+			panel.add(lblNacionalidad);
 			
-			textField_2 = new JTextField();
-			textField_2.setBounds(10, 169, 120, 23);
-			panel.add(textField_2);
-			textField_2.setColumns(10);
+			txtNacionalidad = new JTextField();
+			txtNacionalidad.setBounds(10, 169, 120, 23);
+			panel.add(txtNacionalidad);
+			txtNacionalidad.setColumns(10);
 			
-			JLabel lblNewLabel_3 = new JLabel("Direcci\u00F3n:");
-			lblNewLabel_3.setBounds(10, 197, 60, 23);
-			panel.add(lblNewLabel_3);
+			JLabel lblDireccion = new JLabel("Direcci\u00F3n:");
+			lblDireccion.setBounds(10, 197, 60, 23);
+			panel.add(lblDireccion);
 			
-			textField_3 = new JTextField();
-			textField_3.setBounds(10, 225, 150, 23);
-			panel.add(textField_3);
-			textField_3.setColumns(10);
+			txtDireccion = new JTextField();
+			txtDireccion.setBounds(10, 225, 150, 23);
+			panel.add(txtDireccion);
+			txtDireccion.setColumns(10);
 			
-			JLabel lblNewLabel_4 = new JLabel("Tel\u00E9fono:");
-			lblNewLabel_4.setBounds(10, 253, 60, 23);
-			panel.add(lblNewLabel_4);
+			JLabel lblTelefono = new JLabel("Tel\u00E9fono:");
+			lblTelefono.setBounds(10, 253, 60, 23);
+			panel.add(lblTelefono);
 			
-			textField_4 = new JTextField();
-			textField_4.setBounds(10, 281, 120, 23);
-			panel.add(textField_4);
-			textField_4.setColumns(10);
+			txtTelefono = new JTextField();
+			txtTelefono.setBounds(10, 281, 120, 23);
+			panel.add(txtTelefono);
+			txtTelefono.setColumns(10);
 		}
 		
-		JPanel panel = new JPanel();
-		panel.setBackground(SystemColor.info);
-		panel.setBorder(new TitledBorder(null, "Informaci\u00F3n a completar", TitledBorder.LEADING, TitledBorder.TOP, null, null));
-		panel.setBounds(226, 0, 363, 355);
-		contentPanel.add(panel);
-		panel.setLayout(null);
+		JPanel panelInformacion = new JPanel();
+		panelInformacion.setBackground(SystemColor.info);
+		panelInformacion.setBorder(new TitledBorder(null, "Informaci\u00F3n a completar", TitledBorder.LEADING, TitledBorder.TOP, null, null));
+		panelInformacion.setBounds(226, 0, 363, 355);
+		contentPanel.add(panelInformacion);
+		panelInformacion.setLayout(null);
 		
-		JLabel lblNewLabel_5 = new JLabel("Tipo de vacante:");
-		lblNewLabel_5.setBounds(10, 29, 108, 23);
-		panel.add(lblNewLabel_5);
+		JLabel lblTipoVacante = new JLabel("Tipo de vacante:");
+		lblTipoVacante.setBounds(10, 29, 108, 23);
+		panelInformacion.add(lblTipoVacante);
 		
-		JRadioButton rdbtnNewRadioButton = new JRadioButton("Universitario");
-		rdbtnNewRadioButton.setBackground(SystemColor.info);
-		rdbtnNewRadioButton.setBounds(9, 67, 109, 23);
-		panel.add(rdbtnNewRadioButton);
+		rdbtUniversitario = new JRadioButton("Universitario");
+		rdbtUniversitario.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				rdbtUniversitario.setSelected(true);
+				rdbtnTecnico.setSelected(false);
+				rdbtnObrero.setSelected(false);
+				panelActividad.setVisible(true);
+				lblCarrera.setVisible(true);
+				cbxCarrera.setVisible(true);
+				lblAreaDesarrollo.setVisible(false);
+				cbxAreaDesarrollo.setVisible(false);
+				lblHabilidades.setVisible(false);
+				cbxHabilidades.setVisible(false);
+			}
+		});
+		rdbtUniversitario.setBackground(SystemColor.info);
+		rdbtUniversitario.setBounds(9, 67, 109, 23);
+		panelInformacion.add(rdbtUniversitario);
 		
-		JRadioButton rdbtnNewRadioButton_1 = new JRadioButton("T\u00E9cnico");
-		rdbtnNewRadioButton_1.setBackground(SystemColor.info);
-		rdbtnNewRadioButton_1.setBounds(127, 67, 109, 23);
-		panel.add(rdbtnNewRadioButton_1);
+		rdbtnTecnico = new JRadioButton("T\u00E9cnico");
+		rdbtnTecnico.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				rdbtUniversitario.setSelected(false);
+				rdbtnTecnico.setSelected(true);
+				rdbtnObrero.setSelected(false);
+				panelActividad.setVisible(true);
+				lblCarrera.setVisible(false);
+				cbxCarrera.setVisible(false);
+				lblAreaDesarrollo.setVisible(true);
+				cbxAreaDesarrollo.setVisible(true);
+				lblHabilidades.setVisible(false);
+				cbxHabilidades.setVisible(false);
+			}
+		});
+		rdbtnTecnico.setBackground(SystemColor.info);
+		rdbtnTecnico.setBounds(127, 67, 109, 23);
+		panelInformacion.add(rdbtnTecnico);
 		
-		JRadioButton rdbtnNewRadioButton_2 = new JRadioButton("Obrero");
-		rdbtnNewRadioButton_2.setBackground(SystemColor.info);
-		rdbtnNewRadioButton_2.setBounds(245, 67, 109, 23);
-		panel.add(rdbtnNewRadioButton_2);
+		rdbtnObrero = new JRadioButton("Obrero");
+		rdbtnObrero.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				rdbtUniversitario.setSelected(false);
+				rdbtnTecnico.setSelected(false);
+				rdbtnObrero.setSelected(true);
+				panelActividad.setVisible(true);
+				lblCarrera.setVisible(false);
+				cbxCarrera.setVisible(false);
+				lblAreaDesarrollo.setVisible(false);
+				cbxAreaDesarrollo.setVisible(false);
+				lblHabilidades.setVisible(true);
+				cbxHabilidades.setVisible(true);
+			}
+		});
+		rdbtnObrero.setBackground(SystemColor.info);
+		rdbtnObrero.setBounds(245, 67, 109, 23);
+		panelInformacion.add(rdbtnObrero);
 		
-		JPanel panel_1 = new JPanel();
-		panel_1.setBackground(SystemColor.info);
-		panel_1.setBorder(new TitledBorder(UIManager.getBorder("TitledBorder.border"), "", TitledBorder.LEADING, TitledBorder.TOP, null, new Color(0, 0, 0)));
-		panel_1.setBounds(0, 109, 363, 217);
-		panel.add(panel_1);
-		panel_1.setLayout(null);
+		panelActividad = new JPanel();
+		panelActividad.setBackground(SystemColor.info);
+		panelActividad.setBorder(new TitledBorder(UIManager.getBorder("TitledBorder.border"), "", TitledBorder.LEADING, TitledBorder.TOP, null, new Color(0, 0, 0)));
+		panelActividad.setBounds(0, 109, 363, 217);
+		panelInformacion.add(panelActividad);
+		panelActividad.setLayout(null);
 		
-		JLabel lblNewLabel_6 = new JLabel("Carrera:");
-		lblNewLabel_6.setBounds(71, 37, 59, 23);
-		panel_1.add(lblNewLabel_6);
+		lblCarrera = new JLabel("Carrera:");
+		lblCarrera.setBounds(71, 37, 59, 23);
+		panelActividad.add(lblCarrera);
 		
-		JComboBox comboBox = new JComboBox();
-		comboBox.setBounds(136, 37, 120, 23);
-		panel_1.add(comboBox);
+		cbxCarrera = new JComboBox();
+		cbxCarrera.setBounds(136, 37, 120, 23);
+		panelActividad.add(cbxCarrera);
 		
-		JLabel lblNewLabel_7 = new JLabel("\u00C1rea de desarrollo:");
-		lblNewLabel_7.setBounds(10, 97, 120, 23);
-		panel_1.add(lblNewLabel_7);
+		lblAreaDesarrollo = new JLabel("\u00C1rea de desarrollo:");
+		lblAreaDesarrollo.setBounds(10, 97, 120, 23);
+		panelActividad.add(lblAreaDesarrollo);
 		
-		JLabel lblNewLabel_8 = new JLabel("Habilidades:");
-		lblNewLabel_8.setBounds(48, 157, 69, 23);
-		panel_1.add(lblNewLabel_8);
+		lblHabilidades = new JLabel("Habilidades:");
+		lblHabilidades.setBounds(48, 157, 69, 23);
+		panelActividad.add(lblHabilidades);
 		
-		JComboBox comboBox_2 = new JComboBox();
-		comboBox_2.setBounds(136, 157, 120, 23);
-		panel_1.add(comboBox_2);
+		cbxHabilidades = new JComboBox();
+		cbxHabilidades.setBounds(136, 157, 120, 23);
+		panelActividad.add(cbxHabilidades);
 		
-		JComboBox comboBox_1 = new JComboBox();
-		comboBox_1.setBounds(136, 97, 120, 23);
-		panel_1.add(comboBox_1);
+		cbxAreaDesarrollo = new JComboBox();
+		cbxAreaDesarrollo.setBounds(136, 97, 120, 23);
+		panelActividad.add(cbxAreaDesarrollo);
 		{
 			JPanel buttonPane = new JPanel();
 			buttonPane.setBackground(SystemColor.window);
@@ -166,15 +221,15 @@ public class RegistrarUsuario extends JDialog {
 			buttonPane.setLayout(new FlowLayout(FlowLayout.RIGHT));
 			getContentPane().add(buttonPane, BorderLayout.SOUTH);
 			{
-				JButton okButton = new JButton("Registrar");
-				okButton.setActionCommand("OK");
-				buttonPane.add(okButton);
-				getRootPane().setDefaultButton(okButton);
+				JButton RegistrarButton = new JButton("Registrar");
+				RegistrarButton.setActionCommand("OK");
+				buttonPane.add(RegistrarButton);
+				getRootPane().setDefaultButton(RegistrarButton);
 			}
 			{
-				JButton cancelButton = new JButton("Cancelar");
-				cancelButton.setActionCommand("Cancel");
-				buttonPane.add(cancelButton);
+				JButton cancelarButton = new JButton("Cancelar");
+				cancelarButton.setActionCommand("Cancel");
+				buttonPane.add(cancelarButton);
 			}
 		}
 	}
