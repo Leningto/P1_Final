@@ -44,7 +44,7 @@ public class Principal extends JFrame {
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
-				FileInputStream empresa;
+			/*	FileInputStream empresa;
 				FileOutputStream empresa2;
 				ObjectInputStream empresaRead;
 				ObjectOutputStream empresaWrite;
@@ -74,7 +74,7 @@ public class Principal extends JFrame {
 				} catch (ClassNotFoundException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
-				}
+				}*/
 				try {
 					Principal frame = new Principal();
 					frame.setVisible(true);
@@ -89,7 +89,7 @@ public class Principal extends JFrame {
 	 * Create the frame.
 	 */
 	public Principal() {
-		addWindowListener(new WindowAdapter() {
+		/*addWindowListener(new WindowAdapter() {
 			@Override
 			public void windowClosing(WindowEvent e) {
 				FileOutputStream empresa2;
@@ -107,7 +107,7 @@ public class Principal extends JFrame {
 				}
 				
 			}
-		});
+		});*/
 		setTitle("Principal");
 		setResizable(false);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
