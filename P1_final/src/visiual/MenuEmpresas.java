@@ -35,7 +35,7 @@ public class MenuEmpresas extends JDialog {
 	 */
 	public MenuEmpresas() {
 		setTitle("Empresa");
-		setBounds(100, 100, 535, 430);
+		setBounds(100, 100, 550, 484);
 		getContentPane().setLayout(new BorderLayout());
 		contentPanel.setBackground(new Color(255, 255, 204));
 		contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));

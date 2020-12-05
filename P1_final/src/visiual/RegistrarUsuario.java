@@ -9,9 +9,13 @@ import javax.swing.JDialog;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.TitledBorder;
+
+import logico.Persona;
+
 import javax.swing.UIManager;
 import java.awt.Color;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.JRadioButton;
 import javax.swing.JComboBox;
@@ -57,7 +61,7 @@ public class RegistrarUsuario extends JDialog {
 	 */
 	public RegistrarUsuario() {
 		setTitle("Registrar Usuario");
-		setBounds(100, 100, 605, 435);
+		setBounds(100, 100, 605, 447);
 		getContentPane().setLayout(new BorderLayout());
 		contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
 		getContentPane().add(contentPanel, BorderLayout.CENTER);
@@ -138,6 +142,7 @@ public class RegistrarUsuario extends JDialog {
 		panelInformacion.add(lblTipoVacante);
 		
 		rdbtUniversitario = new JRadioButton("Universitario");
+		rdbtUniversitario.setSelected(true);
 		rdbtUniversitario.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				rdbtUniversitario.setSelected(true);
@@ -235,6 +240,53 @@ public class RegistrarUsuario extends JDialog {
 			getContentPane().add(buttonPane, BorderLayout.SOUTH);
 			{
 				JButton RegistrarButton = new JButton("Registrar");
+				RegistrarButton.addActionListener(new ActionListener() {
+					public void actionPerformed(ActionEvent e) {
+						/*
+						 * Queso aux = null;
+						
+						String nombre = txtNombre.getText();
+						float prebase = Float.parseFloat(txtPrecioBase.getText());
+						float preUnitario = Float.parseFloat(txtPrecioUnitario.getText());
+
+						if (rbtnEsfera.isSelected()) {
+							float radioEsfera = Float.parseFloat(txtRadioEsfera.getText());
+							aux = new Esfera("Q-"+Queseria.getCodigo(),nombre, prebase, preUnitario, radioEsfera);
+							//aux=new Esfera(nombre, preciobase, precioUnitario, radioE);
+						}
+						if (rbtnCilindro.isSelected()) {
+							float Radiocilindro = Float.parseFloat(txtradio_CILINDRO.getText());
+							float alturacilindro = Float.parseFloat(txtAltura_CILINDRO.getText());
+							aux = new Cilindro("Q-"+Queseria.getCodigo(),nombre, prebase, preUnitario, Radiocilindro, alturacilindro);
+						}
+						if (rbtnCilindroHUECO.isSelected()) {
+							float radioInterno = Float.parseFloat(txt_Interno_Hueco.getText());
+							float radioExterno = Float.parseFloat(txtrRadioExternoHueco.getText());
+							float alturahueco=Float.parseFloat(txtAlturaHueco.getText());
+							aux=new CilindroHueco("Q-"+Queseria.getCodigo(),nombre, prebase, preUnitario, radioExterno,alturahueco,radioInterno);
+							//aux=new CilindroHueco(nombre, preciobase, precioUnitario, radioExterno, alturahueco, radioInterno)
+						}
+
+						if(Queseria.getInstance().insertarQueso(aux)) {
+							JOptionPane.showMessageDialog(null, "Realizado con EXITO", "Informacion",JOptionPane.INFORMATION_MESSAGE);
+							clean();
+						}
+						else {
+							JOptionPane.showMessageDialog(null, "Realizado con EXITO", "Informacion",JOptionPane.INFORMATION_MESSAGE);
+						}
+						
+					}
+
+						 */
+						Persona per=null;
+						
+						String cedula=txtCedula.getText();
+						String nombre=txtNombre.getText();
+						String nacionalidad=txtNacionalidad.getText();
+						String telefono=txtTelefono.getText();
+						
+					}
+				});
 				RegistrarButton.setActionCommand("OK");
 				buttonPane.add(RegistrarButton);
 				getRootPane().setDefaultButton(RegistrarButton);
@@ -243,7 +295,7 @@ public class RegistrarUsuario extends JDialog {
 				JButton cancelarButton = new JButton("Cancelar");
 				cancelarButton.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent e) {
-						
+						dispose();
 					}
 				});
 				cancelarButton.setActionCommand("Cancel");

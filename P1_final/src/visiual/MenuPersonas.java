@@ -12,6 +12,8 @@ import javax.swing.JLabel;
 import java.awt.Font;
 import javax.swing.SwingConstants;
 import javax.swing.JList;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class MenuPersonas extends JDialog {
 
@@ -35,7 +37,7 @@ public class MenuPersonas extends JDialog {
 	 */
 	public MenuPersonas() {
 		setTitle("Persona");
-		setBounds(100, 100, 373, 399);
+		setBounds(100, 100, 373, 444);
 		getContentPane().setLayout(new BorderLayout());
 		contentPanel.setBackground(new Color(255, 255, 204));
 		contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -64,6 +66,13 @@ public class MenuPersonas extends JDialog {
 		contentPanel.add(lblNewLabel);
 		
 		JButton btnNewButton = new JButton("Agregar");
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				//agregar curriculums
+				NuevoCurriculum nuevo=new NuevoCurriculum();
+				nuevo.setVisible(true);
+			}
+		});
 		btnNewButton.setBounds(37, 294, 89, 23);
 		contentPanel.add(btnNewButton);
 		
@@ -87,6 +96,11 @@ public class MenuPersonas extends JDialog {
 			}
 			{
 				JButton cancelButton = new JButton("Cancel");
+				cancelButton.addActionListener(new ActionListener() {
+					public void actionPerformed(ActionEvent e) {
+						dispose();
+					}
+				});
 				cancelButton.setActionCommand("Cancel");
 				buttonPane.add(cancelButton);
 			}

@@ -29,6 +29,8 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class Principal extends JFrame {
 
@@ -185,19 +187,43 @@ public class Principal extends JFrame {
 		panel.add(textField_3);
 		
 		JButton btnNewButton = new JButton("Ingresar");
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				MenuEmpresas menuE=new MenuEmpresas();
+				menuE.setVisible(true);
+			}
+		});
 		btnNewButton.setBounds(29, 163, 89, 23);
 		panel.add(btnNewButton);
 		
 		JButton btnRegistrarNueva = new JButton("Registrar nueva");
+		btnRegistrarNueva.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				RegistrarEmpresa regis=new RegistrarEmpresa();
+				regis.setVisible(true);
+			}
+		});
 		btnRegistrarNueva.setForeground(Color.RED);
 		btnRegistrarNueva.setBounds(128, 163, 152, 23);
 		panel.add(btnRegistrarNueva);
 		
 		JButton btnRegistrar = new JButton("Ingresar");
+		btnRegistrar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				MenuPersonas menuP=new MenuPersonas();
+				menuP.setVisible(true);
+			}
+		});
 		btnRegistrar.setBounds(323, 163, 89, 23);
 		panel.add(btnRegistrar);
 		
 		JButton btnRegistrarNueva_1 = new JButton("Registrar nueva");
+		btnRegistrarNueva_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				RegistrarUsuario regi=new RegistrarUsuario();
+				regi.setVisible(true);
+			}
+		});
 		btnRegistrarNueva_1.setForeground(Color.RED);
 		btnRegistrarNueva_1.setBounds(422, 163, 152, 23);
 		panel.add(btnRegistrarNueva_1);
