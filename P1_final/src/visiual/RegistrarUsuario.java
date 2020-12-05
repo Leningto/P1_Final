@@ -18,6 +18,7 @@ import javax.swing.JComboBox;
 import java.awt.SystemColor;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import javax.swing.DefaultComboBoxModel;
 
 public class RegistrarUsuario extends JDialog {
 
@@ -114,6 +115,15 @@ public class RegistrarUsuario extends JDialog {
 			txtTelefono.setBounds(10, 281, 120, 23);
 			panel.add(txtTelefono);
 			txtTelefono.setColumns(10);
+			
+			JComboBox comboBox = new JComboBox();
+			comboBox.setModel(new DefaultComboBoxModel(new String[] {"Femenino", "Masculino"}));
+			comboBox.setBounds(10, 324, 150, 20);
+			panel.add(comboBox);
+			
+			JLabel lblGenero = new JLabel("Genero:");
+			lblGenero.setBounds(10, 303, 60, 23);
+			panel.add(lblGenero);
 		}
 		
 		JPanel panelInformacion = new JPanel();
@@ -196,6 +206,7 @@ public class RegistrarUsuario extends JDialog {
 		panelActividad.add(lblCarrera);
 		
 		cbxCarrera = new JComboBox();
+		cbxCarrera.setModel(new DefaultComboBoxModel(new String[] {"Derecho", "Telematica", "Administracion", "Programacion"}));
 		cbxCarrera.setBounds(136, 37, 120, 23);
 		panelActividad.add(cbxCarrera);
 		
@@ -208,10 +219,12 @@ public class RegistrarUsuario extends JDialog {
 		panelActividad.add(lblHabilidades);
 		
 		cbxHabilidades = new JComboBox();
+		cbxHabilidades.setModel(new DefaultComboBoxModel(new String[] {"Carpintero", "Constructor", "Electricista", "Plomero"}));
 		cbxHabilidades.setBounds(136, 157, 120, 23);
 		panelActividad.add(cbxHabilidades);
 		
 		cbxAreaDesarrollo = new JComboBox();
+		cbxAreaDesarrollo.setModel(new DefaultComboBoxModel(new String[] {"Agronomia", "Contabilidad", "Enfermeria", "Informatica"}));
 		cbxAreaDesarrollo.setBounds(136, 97, 120, 23);
 		panelActividad.add(cbxAreaDesarrollo);
 		{
@@ -228,6 +241,11 @@ public class RegistrarUsuario extends JDialog {
 			}
 			{
 				JButton cancelarButton = new JButton("Cancelar");
+				cancelarButton.addActionListener(new ActionListener() {
+					public void actionPerformed(ActionEvent e) {
+						
+					}
+				});
 				cancelarButton.setActionCommand("Cancel");
 				buttonPane.add(cancelarButton);
 			}
