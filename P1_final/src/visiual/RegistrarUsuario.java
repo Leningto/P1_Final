@@ -43,7 +43,7 @@ public class RegistrarUsuario extends JDialog {
 	 */
 	public RegistrarUsuario() {
 		setTitle("Registrar Usuario");
-		setBounds(100, 100, 605, 397);
+		setBounds(100, 100, 605, 435);
 		getContentPane().setLayout(new BorderLayout());
 		contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
 		getContentPane().add(contentPanel, BorderLayout.CENTER);
@@ -131,7 +131,7 @@ public class RegistrarUsuario extends JDialog {
 		
 		JPanel panel_1 = new JPanel();
 		panel_1.setBackground(SystemColor.info);
-		panel_1.setBorder(new TitledBorder(null, "Carrera", TitledBorder.LEADING, TitledBorder.TOP, null, null));
+		panel_1.setBorder(new TitledBorder(UIManager.getBorder("TitledBorder.border"), "", TitledBorder.LEADING, TitledBorder.TOP, null, new Color(0, 0, 0)));
 		panel_1.setBounds(0, 109, 363, 217);
 		panel.add(panel_1);
 		panel_1.setLayout(null);
