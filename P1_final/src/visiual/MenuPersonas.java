@@ -14,6 +14,7 @@ import javax.swing.SwingConstants;
 import javax.swing.JList;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import javax.swing.border.TitledBorder;
 
 public class MenuPersonas extends JDialog {
 
@@ -44,47 +45,48 @@ public class MenuPersonas extends JDialog {
 		getContentPane().add(contentPanel, BorderLayout.CENTER);
 		contentPanel.setLayout(null);
 		
-		JLabel label_1 = new JLabel("Su lista de curriculums activos");
-		label_1.setForeground(new Color(0, 0, 0));
-		label_1.setBounds(102, 57, 155, 14);
-		contentPanel.add(label_1);
+		JLabel lblcurriculums = new JLabel("Su lista de solicitudes activas");
+		lblcurriculums.setForeground(new Color(0, 0, 0));
+		lblcurriculums.setBounds(89, 57, 180, 23);
+		contentPanel.add(lblcurriculums);
 		
 		JList list = new JList();
-		list.setBounds(37, 82, 281, 195);
+		list.setBounds(37, 82, 281, 214);
 		contentPanel.add(list);
 		
-		JLabel label = new JLabel("Bievenido");
-		label.setHorizontalAlignment(SwingConstants.CENTER);
-		label.setForeground(new Color(0, 0, 0));
-		label.setFont(new Font("Century", Font.ITALIC, 15));
-		label.setBounds(70, 0, 208, 46);
-		contentPanel.add(label);
+		JLabel lblBienvenidos = new JLabel("Bievenido");
+		lblBienvenidos.setHorizontalAlignment(SwingConstants.CENTER);
+		lblBienvenidos.setForeground(new Color(0, 0, 0));
+		lblBienvenidos.setFont(new Font("Century", Font.ITALIC, 15));
+		lblBienvenidos.setBounds(70, 0, 208, 35);
+		contentPanel.add(lblBienvenidos);
 		
-		JLabel lblNewLabel = new JLabel("USUARIO");
-		lblNewLabel.setBackground(new Color(255, 255, 204));
-		lblNewLabel.setBounds(149, 36, 46, 14);
-		contentPanel.add(lblNewLabel);
+		JLabel lblusuario = new JLabel("USUARIO");
+		lblusuario.setBackground(new Color(255, 255, 204));
+		lblusuario.setBounds(150, 34, 70, 23);
+		contentPanel.add(lblusuario);
 		
-		JButton btnNewButton = new JButton("Agregar");
-		btnNewButton.addActionListener(new ActionListener() {
+		JButton btnAgregar = new JButton("Agregar");
+		btnAgregar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				//agregar curriculums
 				NuevoCurriculum nuevo=new NuevoCurriculum();
 				nuevo.setVisible(true);
 			}
 		});
-		btnNewButton.setBounds(37, 294, 89, 23);
-		contentPanel.add(btnNewButton);
+		btnAgregar.setBounds(22, 310, 89, 23);
+		contentPanel.add(btnAgregar);
 		
 		JButton btnEliminar = new JButton("Eliminar");
-		btnEliminar.setBounds(229, 294, 89, 23);
+		btnEliminar.setBounds(244, 310, 89, 23);
 		contentPanel.add(btnEliminar);
 		
-		JButton btnNewButton_1 = new JButton("Vacantes");
-		btnNewButton_1.setBounds(136, 294, 89, 23);
-		contentPanel.add(btnNewButton_1);
+		JButton btnVacantes = new JButton("Vacantes");
+		btnVacantes.setBounds(133, 310, 89, 23);
+		contentPanel.add(btnVacantes);
 		{
 			JPanel buttonPane = new JPanel();
+			buttonPane.setBorder(new TitledBorder(null, "", TitledBorder.LEADING, TitledBorder.TOP, null, null));
 			buttonPane.setBackground(new Color(255, 255, 204));
 			buttonPane.setLayout(new FlowLayout(FlowLayout.RIGHT));
 			getContentPane().add(buttonPane, BorderLayout.SOUTH);
@@ -95,7 +97,7 @@ public class MenuPersonas extends JDialog {
 				getRootPane().setDefaultButton(okButton);
 			}
 			{
-				JButton cancelButton = new JButton("Cancel");
+				JButton cancelButton = new JButton("Cancelar");
 				cancelButton.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent e) {
 						dispose();

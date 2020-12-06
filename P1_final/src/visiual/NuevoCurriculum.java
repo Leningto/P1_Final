@@ -15,12 +15,20 @@ import javax.swing.JTextField;
 import javax.swing.JCheckBox;
 import javax.swing.JComboBox;
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.border.TitledBorder;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class NuevoCurriculum extends JDialog {
 
 	private final JPanel contentPanel = new JPanel();
 	private JTextField textField;
 	private JTextField textField_1;
+	private JCheckBox chckbxIngles;
+	private JCheckBox chckbxFrances;
+	private JCheckBox chckbxEspanol;
+	private JCheckBox chckbxSi;
+	private JCheckBox chckbxNo;
 
 	/**
 	 * Launch the application.
@@ -39,9 +47,10 @@ public class NuevoCurriculum extends JDialog {
 	 * Create the dialog.
 	 */
 	public NuevoCurriculum() {
-		setTitle("Creacion de curriculum");
-		setBounds(100, 100, 326, 285);
+		setTitle("Creacion de solicitud");
+		setBounds(100, 100, 326, 333);
 		getContentPane().setLayout(new BorderLayout());
+		contentPanel.setBackground(new Color(255, 250, 205));
 		contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
 		getContentPane().add(contentPanel, BorderLayout.CENTER);
 		contentPanel.setLayout(new BorderLayout(0, 0));
@@ -51,83 +60,138 @@ public class NuevoCurriculum extends JDialog {
 			contentPanel.add(panel, BorderLayout.CENTER);
 			panel.setLayout(null);
 			
-			JLabel label = new JLabel("Nuevo curriculum");
-			label.setFont(new Font("Yu Gothic UI", Font.ITALIC, 15));
-			label.setBounds(84, 11, 149, 31);
-			panel.add(label);
+			JLabel lblNuevaSolicitud = new JLabel("Nueva solicitud");
+			lblNuevaSolicitud.setFont(new Font("Yu Gothic UI", Font.ITALIC, 15));
+			lblNuevaSolicitud.setBounds(96, 1, 130, 31);
+			panel.add(lblNuevaSolicitud);
 			
 			JLabel label_1 = new JLabel("Idiomas dominados");
-			label_1.setBounds(10, 43, 116, 14);
+			label_1.setBounds(10, 43, 116, 23);
 			panel.add(label_1);
 			
 			JLabel label_2 = new JLabel("Sueldo ideal (RD$)");
-			label_2.setBounds(133, 94, 116, 14);
+			label_2.setBounds(161, 95, 116, 23);
 			panel.add(label_2);
 			
 			textField = new JTextField();
 			textField.setColumns(10);
-			textField.setBounds(136, 111, 108, 20);
+			textField.setBounds(161, 121, 108, 23);
 			panel.add(textField);
 			
 			JLabel label_3 = new JLabel("\u00BFTiene licencia de conducir?");
-			label_3.setBounds(133, 135, 176, 14);
+			label_3.setBounds(123, 150, 180, 23);
 			panel.add(label_3);
 			
-			JCheckBox checkBox = new JCheckBox("");
-			checkBox.setBackground(new Color(255, 255, 204));
-			checkBox.setBounds(133, 151, 21, 23);
-			panel.add(checkBox);
+			chckbxSi = new JCheckBox("");
+			chckbxSi.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					chckbxSi.setSelected(true);
+					chckbxNo.setSelected(false);
+					
+				}
+			});
+			chckbxSi.setBackground(new Color(255, 255, 204));
+			chckbxSi.setBounds(179, 173, 21, 23);
+			panel.add(chckbxSi);
 			{
 				JPanel buttonPane = new JPanel();
-				buttonPane.setBounds(10, 203, 291, 33);
+				buttonPane.setBorder(new TitledBorder(null, "", TitledBorder.LEADING, TitledBorder.TOP, null, null));
+				buttonPane.setBounds(0, 251, 300, 33);
 				panel.add(buttonPane);
-				buttonPane.setBackground(new Color(255, 255, 204));
+				buttonPane.setBackground(Color.WHITE);
 				buttonPane.setLayout(new FlowLayout(FlowLayout.RIGHT));
 				{
-					JButton okButton = new JButton("OK");
-					okButton.setActionCommand("OK");
-					buttonPane.add(okButton);
-					getRootPane().setDefaultButton(okButton);
+					JButton CrearButton = new JButton("Crear");
+					CrearButton.setActionCommand("OK");
+					buttonPane.add(CrearButton);
+					getRootPane().setDefaultButton(CrearButton);
 				}
 				{
-					JButton cancelButton = new JButton("Cancel");
+					JButton cancelButton = new JButton("Cancelar");
+					cancelButton.addActionListener(new ActionListener() {
+						public void actionPerformed(ActionEvent e) {
+							dispose();
+						}
+					});
 					cancelButton.setActionCommand("Cancel");
 					buttonPane.add(cancelButton);
 				}
 			}
 			
-			JCheckBox chckbxNewCheckBox = new JCheckBox("Espanol");
-			chckbxNewCheckBox.setBackground(new Color(255, 255, 204));
-			chckbxNewCheckBox.setBounds(10, 55, 97, 23);
-			panel.add(chckbxNewCheckBox);
+			chckbxEspanol = new JCheckBox("Espanol");
+			chckbxEspanol.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					chckbxEspanol.setSelected(true);
+					chckbxIngles.setSelected(false);
+					chckbxFrances.setSelected(false);
+					
+				}
+				
+			});
+			chckbxEspanol.setBackground(new Color(255, 255, 204));
+			chckbxEspanol.setBounds(10, 69, 97, 23);
+			panel.add(chckbxEspanol);
 			
-			JCheckBox chckbxIngles = new JCheckBox("Ingles");
+			chckbxIngles = new JCheckBox("Ingles");
+			chckbxIngles.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					chckbxEspanol.setSelected(false);
+					chckbxIngles.setSelected(true);
+					chckbxFrances.setSelected(false);
+				}
+			});
 			chckbxIngles.setBackground(new Color(255, 255, 204));
-			chckbxIngles.setBounds(10, 81, 97, 23);
+			chckbxIngles.setBounds(10, 95, 97, 23);
 			panel.add(chckbxIngles);
 			
-			JCheckBox chckbxFrances = new JCheckBox("Frances");
+			chckbxFrances = new JCheckBox("Frances");
+			chckbxFrances.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					chckbxEspanol.setSelected(false);
+					chckbxIngles.setSelected(false);
+					chckbxFrances.setSelected(true);
+				}
+			});
 			chckbxFrances.setBackground(new Color(255, 255, 204));
-			chckbxFrances.setBounds(10, 108, 97, 23);
+			chckbxFrances.setBounds(10, 121, 97, 23);
 			panel.add(chckbxFrances);
 			
 			JLabel lblPuestoDeTrabajo = new JLabel("Puesto de trabajo");
-			lblPuestoDeTrabajo.setBounds(133, 55, 116, 14);
+			lblPuestoDeTrabajo.setBounds(161, 43, 116, 23);
 			panel.add(lblPuestoDeTrabajo);
 			
 			textField_1 = new JTextField();
 			textField_1.setColumns(10);
-			textField_1.setBounds(136, 72, 108, 20);
+			textField_1.setBounds(161, 69, 108, 23);
 			panel.add(textField_1);
 			
 			JLabel lblTipoDeEmpleo = new JLabel("Tipo de empleo");
-			lblTipoDeEmpleo.setBounds(10, 137, 116, 14);
+			lblTipoDeEmpleo.setBounds(10, 170, 97, 23);
 			panel.add(lblTipoDeEmpleo);
 			
 			JComboBox comboBox = new JComboBox();
 			comboBox.setModel(new DefaultComboBoxModel(new String[] {"Tiempo Completo", "Tiempo Parcial", "A distancia"}));
-			comboBox.setBounds(10, 154, 116, 20);
+			comboBox.setBounds(10, 196, 130, 23);
 			panel.add(comboBox);
+			
+			JLabel lblSi = new JLabel("Si");
+			lblSi.setBounds(161, 173, 22, 23);
+			panel.add(lblSi);
+			
+			JLabel lblNo = new JLabel("No");
+			lblNo.setBounds(206, 173, 22, 23);
+			panel.add(lblNo);
+			
+			chckbxNo = new JCheckBox("");
+			chckbxNo.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					chckbxSi.setSelected(false);
+					chckbxNo.setSelected(true);
+				}
+			});
+			chckbxNo.setBackground(new Color(255, 250, 205));
+			chckbxNo.setBounds(228, 173, 21, 23);
+			panel.add(chckbxNo);
 		}
 	}
 }
