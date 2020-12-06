@@ -110,10 +110,10 @@ public class MenuEmpresas extends JDialog {
 			buttonPane.setLayout(new FlowLayout(FlowLayout.RIGHT));
 			getContentPane().add(buttonPane, BorderLayout.SOUTH);
 			{
-				JButton RegistrarButton = new JButton("Registrar");
-				RegistrarButton.setActionCommand("OK");
-				buttonPane.add(RegistrarButton);
-				getRootPane().setDefaultButton(RegistrarButton);
+				JButton OKButton = new JButton("OK");
+				OKButton.setActionCommand("OK");
+				buttonPane.add(OKButton);
+				getRootPane().setDefaultButton(OKButton);
 			}
 			{
 				JButton cancelButton = new JButton("Cancelar");

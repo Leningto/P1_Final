@@ -63,14 +63,15 @@ public class RegistrarUsuario extends JDialog {
 		setTitle("Registrar Usuario");
 		setBounds(100, 100, 605, 447);
 		getContentPane().setLayout(new BorderLayout());
+		contentPanel.setBackground(new Color(255, 250, 205));
 		contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
 		getContentPane().add(contentPanel, BorderLayout.CENTER);
 		contentPanel.setLayout(null);
 		{
 			JPanel panel = new JPanel();
-			panel.setBackground(SystemColor.info);
+			panel.setBackground(new Color(255, 250, 205));
 			panel.setBorder(new TitledBorder(UIManager.getBorder("TitledBorder.border"), "Informaci\u00F3n ", TitledBorder.LEADING, TitledBorder.TOP, null, new Color(0, 0, 0)));
-			panel.setBounds(0, 0, 228, 355);
+			panel.setBounds(0, 0, 228, 380);
 			contentPanel.add(panel);
 			panel.setLayout(null);
 			{
@@ -122,18 +123,18 @@ public class RegistrarUsuario extends JDialog {
 			
 			JComboBox comboBox = new JComboBox();
 			comboBox.setModel(new DefaultComboBoxModel(new String[] {"Femenino", "Masculino"}));
-			comboBox.setBounds(10, 324, 150, 20);
+			comboBox.setBounds(10, 337, 150, 23);
 			panel.add(comboBox);
 			
 			JLabel lblGenero = new JLabel("Genero:");
-			lblGenero.setBounds(10, 303, 60, 23);
+			lblGenero.setBounds(10, 309, 60, 23);
 			panel.add(lblGenero);
 		}
 		
 		JPanel panelInformacion = new JPanel();
-		panelInformacion.setBackground(SystemColor.info);
 		panelInformacion.setBorder(new TitledBorder(null, "Informaci\u00F3n a completar", TitledBorder.LEADING, TitledBorder.TOP, null, null));
-		panelInformacion.setBounds(226, 0, 363, 355);
+		panelInformacion.setBackground(new Color(255, 250, 205));
+		panelInformacion.setBounds(226, 0, 363, 359);
 		contentPanel.add(panelInformacion);
 		panelInformacion.setLayout(null);
 		
@@ -157,7 +158,7 @@ public class RegistrarUsuario extends JDialog {
 				cbxHabilidades.setVisible(false);
 			}
 		});
-		rdbtUniversitario.setBackground(SystemColor.info);
+		rdbtUniversitario.setBackground(new Color(255, 250, 205));
 		rdbtUniversitario.setBounds(9, 67, 109, 23);
 		panelInformacion.add(rdbtUniversitario);
 		
@@ -176,7 +177,7 @@ public class RegistrarUsuario extends JDialog {
 				cbxHabilidades.setVisible(false);
 			}
 		});
-		rdbtnTecnico.setBackground(SystemColor.info);
+		rdbtnTecnico.setBackground(new Color(255, 250, 205));
 		rdbtnTecnico.setBounds(127, 67, 109, 23);
 		panelInformacion.add(rdbtnTecnico);
 		
@@ -195,14 +196,14 @@ public class RegistrarUsuario extends JDialog {
 				cbxHabilidades.setVisible(true);
 			}
 		});
-		rdbtnObrero.setBackground(SystemColor.info);
+		rdbtnObrero.setBackground(new Color(255, 250, 205));
 		rdbtnObrero.setBounds(245, 67, 109, 23);
 		panelInformacion.add(rdbtnObrero);
 		
 		panelActividad = new JPanel();
-		panelActividad.setBackground(SystemColor.info);
-		panelActividad.setBorder(new TitledBorder(UIManager.getBorder("TitledBorder.border"), "", TitledBorder.LEADING, TitledBorder.TOP, null, new Color(0, 0, 0)));
-		panelActividad.setBounds(0, 109, 363, 217);
+		panelActividad.setBorder(new TitledBorder(null, "", TitledBorder.LEADING, TitledBorder.TOP, null, null));
+		panelActividad.setBackground(new Color(255, 250, 205));
+		panelActividad.setBounds(0, 109, 363, 261);
 		panelInformacion.add(panelActividad);
 		panelActividad.setLayout(null);
 		

@@ -47,6 +47,7 @@ public class RegistrarEmpresa extends JDialog {
 		setTitle("Registro de empresa");
 		setBounds(100, 100, 377, 316);
 		getContentPane().setLayout(new BorderLayout());
+		contentPanel.setBackground(new Color(255, 250, 205));
 		contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
 		getContentPane().add(contentPanel, BorderLayout.CENTER);
 		contentPanel.setLayout(new BorderLayout(0, 0));
@@ -124,7 +125,7 @@ public class RegistrarEmpresa extends JDialog {
 		}
 		{
 			JPanel buttonPane = new JPanel();
-			buttonPane.setBackground(new Color(255, 255, 204));
+			buttonPane.setBackground(Color.WHITE);
 			buttonPane.setLayout(new FlowLayout(FlowLayout.RIGHT));
 			getContentPane().add(buttonPane, BorderLayout.SOUTH);
 			{

@@ -13,6 +13,8 @@ import logico.BolsaLaboral;
 import javax.swing.JLabel;
 import java.awt.Font;
 import java.awt.Component;
+import java.awt.Dimension;
+
 import javax.swing.Box;
 import java.awt.Color;
 import javax.swing.JTextField;
@@ -39,6 +41,7 @@ public class Principal extends JFrame {
 	private JTextField textField_1;
 	private JTextField textField_2;
 	private JTextField textField_3;
+	//private Dimension dm;
 
 	/**
 	 * Launch the application.
@@ -114,6 +117,9 @@ public class Principal extends JFrame {
 		setResizable(false);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 600, 244);
+		/*dm = getToolkit().getScreenSize();
+		super.setSize(dm.width, dm.height - 45);
+		setLocationRelativeTo(null);*/
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		contentPane.setLayout(new BorderLayout(0, 0));
