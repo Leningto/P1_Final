@@ -65,37 +65,22 @@ public class MenuPersonas extends JDialog {
 		lblusuario.setBackground(new Color(255, 255, 204));
 		lblusuario.setBounds(150, 34, 70, 23);
 		contentPanel.add(lblusuario);
-		
-		JButton btnAgregar = new JButton("Agregar");
-		btnAgregar.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				//agregar curriculums
-				NuevoCurriculum nuevo=new NuevoCurriculum();
-				nuevo.setVisible(true);
-			}
-		});
-		btnAgregar.setBounds(22, 310, 89, 23);
-		contentPanel.add(btnAgregar);
-		
-		JButton btnEliminar = new JButton("Eliminar");
-		btnEliminar.setBounds(244, 310, 89, 23);
-		contentPanel.add(btnEliminar);
-		
-		JButton btnVacantes = new JButton("Vacantes");
-		btnVacantes.setBounds(133, 310, 89, 23);
-		contentPanel.add(btnVacantes);
 		{
 			JPanel buttonPane = new JPanel();
 			buttonPane.setBorder(new TitledBorder(null, "", TitledBorder.LEADING, TitledBorder.TOP, null, null));
 			buttonPane.setBackground(new Color(255, 255, 204));
 			buttonPane.setLayout(new FlowLayout(FlowLayout.RIGHT));
 			getContentPane().add(buttonPane, BorderLayout.SOUTH);
-			{
-				JButton okButton = new JButton("OK");
-				okButton.setActionCommand("OK");
-				buttonPane.add(okButton);
-				getRootPane().setDefaultButton(okButton);
-			}
+			
+			JButton btnAgregar = new JButton("Agregar");
+			buttonPane.add(btnAgregar);
+			btnAgregar.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					//agregar curriculums
+					NuevoCurriculum nuevo=new NuevoCurriculum();
+					nuevo.setVisible(true);
+				}
+			});
 			{
 				JButton cancelButton = new JButton("Cancelar");
 				cancelButton.addActionListener(new ActionListener() {
@@ -103,6 +88,9 @@ public class MenuPersonas extends JDialog {
 						dispose();
 					}
 				});
+				
+				JButton btnEliminar = new JButton("Eliminar");
+				buttonPane.add(btnEliminar);
 				cancelButton.setActionCommand("Cancel");
 				buttonPane.add(cancelButton);
 			}

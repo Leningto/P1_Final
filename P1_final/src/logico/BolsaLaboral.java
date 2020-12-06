@@ -240,6 +240,18 @@ public class BolsaLaboral {
 		}
 		return aux;
 	}
+	public Curriculum buscarCurri(int seleccion) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	public boolean EliminarCurri(Curriculum aux) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+	public Persona buscarPersona(String cedula) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 
 	
 

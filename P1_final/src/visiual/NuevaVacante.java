@@ -7,8 +7,19 @@ import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import logico.BolsaLaboral;
+import logico.Obrero;
+import logico.Persona;
+import logico.Tecnico;
+import logico.Universitario;
+import logico.Vacante;
+import logico.vancanteUniversitario;
+
 import java.awt.Color;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+
 import java.awt.Font;
 import javax.swing.JTextField;
 import javax.swing.JCheckBox;
@@ -16,7 +27,6 @@ import javax.swing.JComboBox;
 import javax.swing.JRadioButton;
 import java.awt.SystemColor;
 import javax.swing.DefaultComboBoxModel;
-import javax.swing.border.TitledBorder;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
@@ -26,12 +36,6 @@ public class NuevaVacante extends JDialog {
 	private JTextField textField;
 	private JTextField textField_1;
 	private JTextField textField_2;
-	private JCheckBox chckbxEspanol;
-	private JCheckBox chckbxIngles;
-	private JCheckBox chckbxFrances;
-	private JRadioButton rdbtnUniversitario;
-	private JRadioButton rdbtnTecnico;
-	private JRadioButton rdbtnObrero;
 
 	/**
 	 * Launch the application.
@@ -51,9 +55,8 @@ public class NuevaVacante extends JDialog {
 	 */
 	public NuevaVacante() {
 		setTitle("Creaci\u00F3n de vacante");
-		setBounds(100, 100, 613, 419);
+		setBounds(100, 100, 613, 454);
 		getContentPane().setLayout(new BorderLayout());
-		contentPanel.setBackground(new Color(255, 250, 205));
 		contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
 		getContentPane().add(contentPanel, BorderLayout.CENTER);
 		contentPanel.setLayout(new BorderLayout(0, 0));
@@ -65,83 +68,62 @@ public class NuevaVacante extends JDialog {
 			{
 				JLabel lblNuevaVacante = new JLabel("Nueva vacante");
 				lblNuevaVacante.setFont(new Font("Yu Gothic UI", Font.ITALIC, 15));
-				lblNuevaVacante.setBounds(243, 2, 149, 31);
+				lblNuevaVacante.setBounds(232, 11, 149, 31);
 				panel.add(lblNuevaVacante);
 			}
 			{
 				JLabel label = new JLabel("Puesto de trabajo");
-				label.setBounds(10, 48, 116, 23);
+				label.setBounds(10, 48, 116, 14);
 				panel.add(label);
 			}
 			{
 				textField = new JTextField();
 				textField.setColumns(10);
-				textField.setBounds(10, 73, 120, 23);
+				textField.setBounds(10, 65, 108, 20);
 				panel.add(textField);
 			}
 			{
 				JLabel label = new JLabel("Sueldo ideal (RD$)");
-				label.setBounds(10, 148, 116, 23);
+				label.setBounds(10, 164, 116, 14);
 				panel.add(label);
 			}
 			{
 				textField_1 = new JTextField();
 				textField_1.setColumns(10);
-				textField_1.setBounds(10, 173, 120, 23);
+				textField_1.setBounds(10, 189, 108, 20);
 				panel.add(textField_1);
 			}
 			{
 				JLabel label = new JLabel("Idiomas dominados");
-				label.setBounds(10, 215, 116, 23);
+				label.setBounds(10, 223, 116, 14);
 				panel.add(label);
 			}
 			{
-				chckbxEspanol = new JCheckBox("Espanol");
-				chckbxEspanol.addActionListener(new ActionListener() {
-					public void actionPerformed(ActionEvent e) {
-						chckbxEspanol.setSelected(true);
-						chckbxIngles.setSelected(false);
-						chckbxFrances.setSelected(false);
-					}
-				});
-				chckbxEspanol.setBackground(new Color(255, 255, 204));
-				chckbxEspanol.setBounds(10, 244, 97, 23);
-				panel.add(chckbxEspanol);
+				JCheckBox checkBox = new JCheckBox("Espanol");
+				checkBox.setBackground(new Color(255, 255, 204));
+				checkBox.setBounds(10, 244, 97, 23);
+				panel.add(checkBox);
 			}
 			{
-				chckbxIngles = new JCheckBox("Ingl\u00E9s");
-				chckbxIngles.addActionListener(new ActionListener() {
-					public void actionPerformed(ActionEvent e) {
-						chckbxEspanol.setSelected(false);
-						chckbxIngles.setSelected(true);
-						chckbxFrances.setSelected(false);
-					}
-				});
-				chckbxIngles.setBackground(new Color(255, 255, 204));
-				chckbxIngles.setBounds(10, 270, 97, 23);
-				panel.add(chckbxIngles);
+				JCheckBox checkBox = new JCheckBox("Ingles");
+				checkBox.setBackground(new Color(255, 255, 204));
+				checkBox.setBounds(10, 270, 97, 23);
+				panel.add(checkBox);
 			}
 			{
-				chckbxFrances = new JCheckBox("Franc\u00E9s");
-				chckbxFrances.addActionListener(new ActionListener() {
-					public void actionPerformed(ActionEvent e) {
-						chckbxEspanol.setSelected(false);
-						chckbxIngles.setSelected(false);
-						chckbxFrances.setSelected(true);
-					}
-				});
-				chckbxFrances.setBackground(new Color(255, 255, 204));
-				chckbxFrances.setBounds(10, 296, 97, 23);
-				panel.add(chckbxFrances);
+				JCheckBox checkBox = new JCheckBox("Frances");
+				checkBox.setBackground(new Color(255, 255, 204));
+				checkBox.setBounds(10, 296, 97, 23);
+				panel.add(checkBox);
 			}
 			{
 				JLabel label = new JLabel("Tipo de empleo");
-				label.setBounds(10, 98, 116, 23);
+				label.setBounds(10, 99, 116, 14);
 				panel.add(label);
 			}
 			{
 				JComboBox comboBox = new JComboBox();
-				comboBox.setBounds(10, 123, 120, 23);
+				comboBox.setBounds(10, 122, 116, 20);
 				panel.add(comboBox);
 			}
 			
@@ -149,41 +131,20 @@ public class NuevaVacante extends JDialog {
 			label.setBounds(326, 76, 108, 23);
 			panel.add(label);
 			
-			rdbtnUniversitario = new JRadioButton("Universitario");
-			rdbtnUniversitario.addActionListener(new ActionListener() {
-				public void actionPerformed(ActionEvent e) {
-					rdbtnUniversitario.setSelected(true);
-					rdbtnTecnico.setSelected(false);
-					rdbtnObrero.setSelected(false);
-				}
-			});
-			rdbtnUniversitario.setBackground(new Color(255, 250, 205));
-			rdbtnUniversitario.setBounds(213, 107, 109, 23);
-			panel.add(rdbtnUniversitario);
+			JRadioButton radioButton = new JRadioButton("Universitario");
+			radioButton.setBackground(SystemColor.info);
+			radioButton.setBounds(213, 107, 109, 23);
+			panel.add(radioButton);
 			
-			rdbtnTecnico = new JRadioButton("T\u00E9cnico");
-			rdbtnTecnico.addActionListener(new ActionListener() {
-				public void actionPerformed(ActionEvent e) {
-					rdbtnUniversitario.setSelected(false);
-					rdbtnTecnico.setSelected(true);
-					rdbtnObrero.setSelected(false);
-				}
-			});
-			rdbtnTecnico.setBackground(new Color(255, 250, 205));
-			rdbtnTecnico.setBounds(336, 107, 109, 23);
-			panel.add(rdbtnTecnico);
+			JRadioButton radioButton_1 = new JRadioButton("T\u00E9cnico");
+			radioButton_1.setBackground(SystemColor.info);
+			radioButton_1.setBounds(336, 107, 109, 23);
+			panel.add(radioButton_1);
 			
-			rdbtnObrero = new JRadioButton("Obrero");
-			rdbtnObrero.addActionListener(new ActionListener() {
-				public void actionPerformed(ActionEvent e) {
-					rdbtnUniversitario.setSelected(true);
-					rdbtnTecnico.setSelected(false);
-					rdbtnObrero.setSelected(false);
-				}
-			});
-			rdbtnObrero.setBackground(new Color(255, 250, 205));
-			rdbtnObrero.setBounds(460, 107, 109, 23);
-			panel.add(rdbtnObrero);
+			JRadioButton radioButton_2 = new JRadioButton("Obrero");
+			radioButton_2.setBackground(SystemColor.info);
+			radioButton_2.setBounds(460, 107, 109, 23);
+			panel.add(radioButton_2);
 			
 			JCheckBox chckbxNewCheckBox = new JCheckBox("\u00BFRequiere licencia de conducir?");
 			chckbxNewCheckBox.setBackground(new Color(255, 255, 204));
@@ -216,41 +177,74 @@ public class NuevaVacante extends JDialog {
 			
 			JComboBox comboBox_3 = new JComboBox();
 			comboBox_3.setModel(new DefaultComboBoxModel(new String[] {"Cualquiera", "Femenino", "Masculino"}));
-			comboBox_3.setBounds(213, 295, 116, 23);
+			comboBox_3.setBounds(213, 306, 116, 20);
 			panel.add(comboBox_3);
 			
 			JLabel lblGeneroPredilecto = new JLabel("Genero predilecto");
-			lblGeneroPredilecto.setBounds(213, 270, 116, 23);
+			lblGeneroPredilecto.setBounds(213, 274, 116, 23);
 			panel.add(lblGeneroPredilecto);
 			
 			JLabel lblCiudad = new JLabel("Ciudad");
-			lblCiudad.setBounds(404, 270, 116, 23);
+			lblCiudad.setBounds(404, 274, 116, 23);
 			panel.add(lblCiudad);
 			
 			textField_2 = new JTextField();
-			textField_2.setBounds(404, 295, 116, 23);
+			textField_2.setBounds(404, 306, 116, 20);
 			panel.add(textField_2);
 			textField_2.setColumns(10);
 		}
 		{
 			JPanel buttonPane = new JPanel();
-			buttonPane.setBorder(new TitledBorder(null, "", TitledBorder.LEADING, TitledBorder.TOP, null, null));
-			buttonPane.setBackground(Color.WHITE);
+			buttonPane.setBackground(new Color(255, 255, 204));
 			buttonPane.setLayout(new FlowLayout(FlowLayout.RIGHT));
 			getContentPane().add(buttonPane, BorderLayout.SOUTH);
 			{
-				JButton CrearButton = new JButton("Crear");
-				CrearButton.setActionCommand("OK");
-				buttonPane.add(CrearButton);
-				getRootPane().setDefaultButton(CrearButton);
-			}
-			{
-				JButton cancelButton = new JButton("Cancelar");
-				cancelButton.addActionListener(new ActionListener() {
+				JButton okButton = new JButton("Registrar");
+				okButton.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent e) {
-						dispose();
+						/*
+						 * 	Persona per=null;
+						
+						String cedula=txtCedula.getText();
+						String nombre=txtNombre.getText();
+						String nacionalidad=txtNacionalidad.getText();
+						String telefono=txtTelefono.getText();
+						String direccion=txtDireccion.getText();
+						String genero=cbxGenreo.getSelectedItem().toString();
+						
+						if(rdbtUniversitario.isSelected()) {
+							String carrera=cbxCarrera.getSelectedItem().toString();
+							per=new Universitario(nombre, cedula, telefono, direccion, true, nacionalidad, carrera);
+						}
+						if(rdbtnTecnico.isSelected()) {
+							String area=cbxAreaDesarrollo.getSelectedItem().toString();
+							per=new Tecnico(nombre, cedula, telefono, direccion, true, nacionalidad, area);
+						}
+						if(rdbtnObrero.isSelected()) {
+							String Habilidad=cbxHabilidades.getSelectedItem().toString();
+							per=new Obrero(nombre, cedula, telefono, direccion, true, nacionalidad, Habilidad);
+						}
+						if(BolsaLaboral.getInstance().insertarUnsuario(per)) {
+							JOptionPane.showMessageDialog(null, "Realizado con EXITO", "Informacion",JOptionPane.INFORMATION_MESSAGE);
+						}
+						else {
+							JOptionPane.showMessageDialog(null, "NO Realizado", "Informacion",JOptionPane.INFORMATION_MESSAGE);
+						}
+						
+					}
+						 */
+						//Vacante vaca=null;
+						
+						
+
 					}
 				});
+				okButton.setActionCommand("OK");
+				buttonPane.add(okButton);
+				getRootPane().setDefaultButton(okButton);
+			}
+			{
+				JButton cancelButton = new JButton("Cancel");
 				cancelButton.setActionCommand("Cancel");
 				buttonPane.add(cancelButton);
 			}
