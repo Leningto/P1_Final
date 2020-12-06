@@ -10,7 +10,12 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.TitledBorder;
 
+import logico.BolsaLaboral;
+import logico.Obrero;
 import logico.Persona;
+
+import logico.Tecnico;
+import logico.Universitario;
 
 import javax.swing.UIManager;
 import java.awt.Color;
@@ -42,6 +47,7 @@ public class RegistrarUsuario extends JDialog {
 	private JComboBox cbxHabilidades;
 	private JPanel panelActividad;
 	private JRadioButton rdbtUniversitario;
+	private JComboBox cbxgenerp;
 
 	/**
 	 * Launch the application.
@@ -70,7 +76,8 @@ public class RegistrarUsuario extends JDialog {
 		{
 			JPanel panel = new JPanel();
 			panel.setBackground(new Color(255, 250, 205));
-			panel.setBorder(new TitledBorder(UIManager.getBorder("TitledBorder.border"), "Informaci\u00F3n ", TitledBorder.LEADING, TitledBorder.TOP, null, new Color(0, 0, 0)));
+			panel.setBorder(new TitledBorder(UIManager.getBorder("TitledBorder.border"), "Informaci\u00F3n ",
+					TitledBorder.LEADING, TitledBorder.TOP, null, new Color(0, 0, 0)));
 			panel.setBounds(0, 0, 228, 380);
 			contentPanel.add(panel);
 			panel.setLayout(null);
@@ -79,69 +86,70 @@ public class RegistrarUsuario extends JDialog {
 				lblCedula.setBounds(10, 29, 50, 23);
 				panel.add(lblCedula);
 			}
-			
+
 			txtCedula = new JTextField();
 			txtCedula.setBounds(10, 57, 120, 23);
 			panel.add(txtCedula);
 			txtCedula.setColumns(10);
-			
+
 			JLabel lblNombre = new JLabel("Nombre:");
 			lblNombre.setBounds(10, 85, 50, 23);
 			panel.add(lblNombre);
-			
+
 			txtNombre = new JTextField();
 			txtNombre.setBounds(10, 113, 150, 23);
 			panel.add(txtNombre);
 			txtNombre.setColumns(10);
-			
+
 			JLabel lblNacionalidad = new JLabel("Nacionalidad:");
 			lblNacionalidad.setBounds(10, 141, 82, 23);
 			panel.add(lblNacionalidad);
-			
+
 			txtNacionalidad = new JTextField();
 			txtNacionalidad.setBounds(10, 169, 120, 23);
 			panel.add(txtNacionalidad);
 			txtNacionalidad.setColumns(10);
-			
+
 			JLabel lblDireccion = new JLabel("Direcci\u00F3n:");
 			lblDireccion.setBounds(10, 197, 60, 23);
 			panel.add(lblDireccion);
-			
+
 			txtDireccion = new JTextField();
 			txtDireccion.setBounds(10, 225, 150, 23);
 			panel.add(txtDireccion);
 			txtDireccion.setColumns(10);
-			
+
 			JLabel lblTelefono = new JLabel("Tel\u00E9fono:");
 			lblTelefono.setBounds(10, 253, 60, 23);
 			panel.add(lblTelefono);
-			
+
 			txtTelefono = new JTextField();
 			txtTelefono.setBounds(10, 281, 120, 23);
 			panel.add(txtTelefono);
 			txtTelefono.setColumns(10);
-			
-			JComboBox comboBox = new JComboBox();
-			comboBox.setModel(new DefaultComboBoxModel(new String[] {"Femenino", "Masculino"}));
-			comboBox.setBounds(10, 337, 150, 23);
-			panel.add(comboBox);
-			
+
+			cbxgenerp = new JComboBox();
+			cbxgenerp.setModel(new DefaultComboBoxModel(new String[] { "Femenino", "Masculino" }));
+			cbxgenerp.setBounds(10, 337, 150, 23);
+			panel.add(cbxgenerp);
+
 			JLabel lblGenero = new JLabel("Genero:");
 			lblGenero.setBounds(10, 309, 60, 23);
 			panel.add(lblGenero);
 		}
-		
+
 		JPanel panelInformacion = new JPanel();
-		panelInformacion.setBorder(new TitledBorder(null, "Informaci\u00F3n a completar", TitledBorder.LEADING, TitledBorder.TOP, null, null));
+		panelInformacion.setBorder(new TitledBorder(null, "Informaci\u00F3n a completar", TitledBorder.LEADING,
+				TitledBorder.TOP, null, null));
 		panelInformacion.setBackground(new Color(255, 250, 205));
 		panelInformacion.setBounds(226, 0, 363, 359);
 		contentPanel.add(panelInformacion);
 		panelInformacion.setLayout(null);
-		
+
 		JLabel lblTipoVacante = new JLabel("Tipo de vacante:");
 		lblTipoVacante.setBounds(10, 29, 108, 23);
 		panelInformacion.add(lblTipoVacante);
-		
+
 		rdbtUniversitario = new JRadioButton("Universitario");
 		rdbtUniversitario.setSelected(true);
 		rdbtUniversitario.addActionListener(new ActionListener() {
@@ -161,7 +169,7 @@ public class RegistrarUsuario extends JDialog {
 		rdbtUniversitario.setBackground(new Color(255, 250, 205));
 		rdbtUniversitario.setBounds(9, 67, 109, 23);
 		panelInformacion.add(rdbtUniversitario);
-		
+
 		rdbtnTecnico = new JRadioButton("T\u00E9cnico");
 		rdbtnTecnico.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -180,7 +188,7 @@ public class RegistrarUsuario extends JDialog {
 		rdbtnTecnico.setBackground(new Color(255, 250, 205));
 		rdbtnTecnico.setBounds(127, 67, 109, 23);
 		panelInformacion.add(rdbtnTecnico);
-		
+
 		rdbtnObrero = new JRadioButton("Obrero");
 		rdbtnObrero.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -199,38 +207,41 @@ public class RegistrarUsuario extends JDialog {
 		rdbtnObrero.setBackground(new Color(255, 250, 205));
 		rdbtnObrero.setBounds(245, 67, 109, 23);
 		panelInformacion.add(rdbtnObrero);
-		
+
 		panelActividad = new JPanel();
 		panelActividad.setBorder(new TitledBorder(null, "", TitledBorder.LEADING, TitledBorder.TOP, null, null));
 		panelActividad.setBackground(new Color(255, 250, 205));
 		panelActividad.setBounds(0, 109, 363, 261);
 		panelInformacion.add(panelActividad);
 		panelActividad.setLayout(null);
-		
+
 		lblCarrera = new JLabel("Carrera:");
 		lblCarrera.setBounds(71, 37, 59, 23);
 		panelActividad.add(lblCarrera);
-		
+
 		cbxCarrera = new JComboBox();
-		cbxCarrera.setModel(new DefaultComboBoxModel(new String[] {"Derecho", "Telematica", "Administracion", "Programacion"}));
+		cbxCarrera.setModel(
+				new DefaultComboBoxModel(new String[] { "Derecho", "Telematica", "Administracion", "Programacion" }));
 		cbxCarrera.setBounds(136, 37, 120, 23);
 		panelActividad.add(cbxCarrera);
-		
+
 		lblAreaDesarrollo = new JLabel("\u00C1rea de desarrollo:");
 		lblAreaDesarrollo.setBounds(10, 97, 120, 23);
 		panelActividad.add(lblAreaDesarrollo);
-		
+
 		lblHabilidades = new JLabel("Habilidades:");
 		lblHabilidades.setBounds(48, 157, 69, 23);
 		panelActividad.add(lblHabilidades);
-		
+
 		cbxHabilidades = new JComboBox();
-		cbxHabilidades.setModel(new DefaultComboBoxModel(new String[] {"Carpintero", "Constructor", "Electricista", "Plomero"}));
+		cbxHabilidades.setModel(
+				new DefaultComboBoxModel(new String[] { "Carpintero", "Constructor", "Electricista", "Plomero" }));
 		cbxHabilidades.setBounds(136, 157, 120, 23);
 		panelActividad.add(cbxHabilidades);
-		
+
 		cbxAreaDesarrollo = new JComboBox();
-		cbxAreaDesarrollo.setModel(new DefaultComboBoxModel(new String[] {"Agronomia", "Contabilidad", "Enfermeria", "Informatica"}));
+		cbxAreaDesarrollo.setModel(
+				new DefaultComboBoxModel(new String[] { "Agronomia", "Contabilidad", "Enfermeria", "Informatica" }));
 		cbxAreaDesarrollo.setBounds(136, 97, 120, 23);
 		panelActividad.add(cbxAreaDesarrollo);
 		{
@@ -245,47 +256,65 @@ public class RegistrarUsuario extends JDialog {
 					public void actionPerformed(ActionEvent e) {
 						/*
 						 * Queso aux = null;
-						
-						String nombre = txtNombre.getText();
-						float prebase = Float.parseFloat(txtPrecioBase.getText());
-						float preUnitario = Float.parseFloat(txtPrecioUnitario.getText());
-
-						if (rbtnEsfera.isSelected()) {
-							float radioEsfera = Float.parseFloat(txtRadioEsfera.getText());
-							aux = new Esfera("Q-"+Queseria.getCodigo(),nombre, prebase, preUnitario, radioEsfera);
-							//aux=new Esfera(nombre, preciobase, precioUnitario, radioE);
-						}
-						if (rbtnCilindro.isSelected()) {
-							float Radiocilindro = Float.parseFloat(txtradio_CILINDRO.getText());
-							float alturacilindro = Float.parseFloat(txtAltura_CILINDRO.getText());
-							aux = new Cilindro("Q-"+Queseria.getCodigo(),nombre, prebase, preUnitario, Radiocilindro, alturacilindro);
-						}
-						if (rbtnCilindroHUECO.isSelected()) {
-							float radioInterno = Float.parseFloat(txt_Interno_Hueco.getText());
-							float radioExterno = Float.parseFloat(txtrRadioExternoHueco.getText());
-							float alturahueco=Float.parseFloat(txtAlturaHueco.getText());
-							aux=new CilindroHueco("Q-"+Queseria.getCodigo(),nombre, prebase, preUnitario, radioExterno,alturahueco,radioInterno);
-							//aux=new CilindroHueco(nombre, preciobase, precioUnitario, radioExterno, alturahueco, radioInterno)
-						}
-
-						if(Queseria.getInstance().insertarQueso(aux)) {
-							JOptionPane.showMessageDialog(null, "Realizado con EXITO", "Informacion",JOptionPane.INFORMATION_MESSAGE);
-							clean();
-						}
-						else {
-							JOptionPane.showMessageDialog(null, "Realizado con EXITO", "Informacion",JOptionPane.INFORMATION_MESSAGE);
-						}
-						
-					}
-
+						 * 
+						 * String nombre = txtNombre.getText(); float prebase =
+						 * Float.parseFloat(txtPrecioBase.getText()); float preUnitario =
+						 * Float.parseFloat(txtPrecioUnitario.getText());
+						 * 
+						 * if (rbtnEsfera.isSelected()) { float radioEsfera =
+						 * Float.parseFloat(txtRadioEsfera.getText()); aux = new
+						 * Esfera("Q-"+Queseria.getCodigo(),nombre, prebase, preUnitario, radioEsfera);
+						 * //aux=new Esfera(nombre, preciobase, precioUnitario, radioE); } if
+						 * (rbtnCilindro.isSelected()) { float Radiocilindro =
+						 * Float.parseFloat(txtradio_CILINDRO.getText()); float alturacilindro =
+						 * Float.parseFloat(txtAltura_CILINDRO.getText()); aux = new
+						 * Cilindro("Q-"+Queseria.getCodigo(),nombre, prebase, preUnitario,
+						 * Radiocilindro, alturacilindro); } if (rbtnCilindroHUECO.isSelected()) { float
+						 * radioInterno = Float.parseFloat(txt_Interno_Hueco.getText()); float
+						 * radioExterno = Float.parseFloat(txtrRadioExternoHueco.getText()); float
+						 * alturahueco=Float.parseFloat(txtAlturaHueco.getText()); aux=new
+						 * CilindroHueco("Q-"+Queseria.getCodigo(),nombre, prebase, preUnitario,
+						 * radioExterno,alturahueco,radioInterno); //aux=new CilindroHueco(nombre,
+						 * preciobase, precioUnitario, radioExterno, alturahueco, radioInterno) }
+						 * 
+						 * if(Queseria.getInstance().insertarQueso(aux)) {
+						 * JOptionPane.showMessageDialog(null, "Realizado con EXITO",
+						 * "Informacion",JOptionPane.INFORMATION_MESSAGE); clean(); } else {
+						 * JOptionPane.showMessageDialog(null, "Realizado con EXITO",
+						 * "Informacion",JOptionPane.INFORMATION_MESSAGE); }
+						 * 
+						 * }
+						 * 
 						 */
-						Persona per=null;
-						
-						String cedula=txtCedula.getText();
-						String nombre=txtNombre.getText();
-						String nacionalidad=txtNacionalidad.getText();
-						String telefono=txtTelefono.getText();
-						
+						Persona per = null;
+
+						String cedula = txtCedula.getText();
+						String nombre = txtNombre.getText();
+						String nacionalidad = txtNacionalidad.getText();
+						String telefono = txtTelefono.getText();
+						String genero = cbxgenerp.getSelectedItem().toString();
+						String direccion = txtDireccion.getText();
+
+						if (rdbtUniversitario.isSelected()) {
+							String carrera = cbxCarrera.getSelectedItem().toString();
+							per = new Universitario(nombre, cedula, telefono, direccion, true, nacionalidad, carrera);
+						}
+						if (rdbtnTecnico.isSelected()) {
+							String area = cbxAreaDesarrollo.getSelectedItem().toString();
+							per = new Tecnico(nombre, cedula, telefono, direccion, true, nacionalidad, area);
+						}
+						if (rdbtnObrero.isSelected()) {
+							String habilidade = cbxHabilidades.getSelectedItem().toString();
+							per = new Obrero(nombre, cedula, telefono, direccion, true, nacionalidad, habilidade);
+						}
+						if (BolsaLaboral.getInstance().insertarUnsuario(per)) {
+							JOptionPane.showMessageDialog(null, "Realizado con EXITO", "Informacion",
+									JOptionPane.INFORMATION_MESSAGE);
+						} else {
+							JOptionPane.showMessageDialog(null, "NO Realizado", "Informacion",
+									JOptionPane.INFORMATION_MESSAGE);
+						}
+
 					}
 				});
 				RegistrarButton.setActionCommand("OK");
