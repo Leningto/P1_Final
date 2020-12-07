@@ -29,6 +29,7 @@ import java.awt.SystemColor;
 import javax.swing.DefaultComboBoxModel;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import javax.swing.border.TitledBorder;
 
 public class NuevaVacante extends JDialog {
 
@@ -57,6 +58,7 @@ public class NuevaVacante extends JDialog {
 		setTitle("Creaci\u00F3n de vacante");
 		setBounds(100, 100, 613, 454);
 		getContentPane().setLayout(new BorderLayout());
+		contentPanel.setBackground(new Color(255, 250, 205));
 		contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
 		getContentPane().add(contentPanel, BorderLayout.CENTER);
 		contentPanel.setLayout(new BorderLayout(0, 0));
@@ -68,34 +70,34 @@ public class NuevaVacante extends JDialog {
 			{
 				JLabel lblNuevaVacante = new JLabel("Nueva vacante");
 				lblNuevaVacante.setFont(new Font("Yu Gothic UI", Font.ITALIC, 15));
-				lblNuevaVacante.setBounds(232, 11, 149, 31);
+				lblNuevaVacante.setBounds(244, 0, 149, 31);
 				panel.add(lblNuevaVacante);
 			}
 			{
 				JLabel label = new JLabel("Puesto de trabajo");
-				label.setBounds(10, 48, 116, 14);
+				label.setBounds(10, 48, 120, 23);
 				panel.add(label);
 			}
 			{
 				textField = new JTextField();
 				textField.setColumns(10);
-				textField.setBounds(10, 65, 108, 20);
+				textField.setBounds(10, 70, 120, 23);
 				panel.add(textField);
 			}
 			{
 				JLabel label = new JLabel("Sueldo ideal (RD$)");
-				label.setBounds(10, 164, 116, 14);
+				label.setBounds(10, 152, 116, 23);
 				panel.add(label);
 			}
 			{
 				textField_1 = new JTextField();
 				textField_1.setColumns(10);
-				textField_1.setBounds(10, 189, 108, 20);
+				textField_1.setBounds(10, 174, 120, 23);
 				panel.add(textField_1);
 			}
 			{
 				JLabel label = new JLabel("Idiomas dominados");
-				label.setBounds(10, 223, 116, 14);
+				label.setBounds(10, 220, 116, 23);
 				panel.add(label);
 			}
 			{
@@ -118,12 +120,12 @@ public class NuevaVacante extends JDialog {
 			}
 			{
 				JLabel label = new JLabel("Tipo de empleo");
-				label.setBounds(10, 99, 116, 14);
+				label.setBounds(10, 100, 116, 23);
 				panel.add(label);
 			}
 			{
 				JComboBox comboBox = new JComboBox();
-				comboBox.setBounds(10, 122, 116, 20);
+				comboBox.setBounds(10, 122, 120, 23);
 				panel.add(comboBox);
 			}
 			
@@ -132,17 +134,17 @@ public class NuevaVacante extends JDialog {
 			panel.add(label);
 			
 			JRadioButton radioButton = new JRadioButton("Universitario");
-			radioButton.setBackground(SystemColor.info);
+			radioButton.setBackground(new Color(255, 250, 205));
 			radioButton.setBounds(213, 107, 109, 23);
 			panel.add(radioButton);
 			
 			JRadioButton radioButton_1 = new JRadioButton("T\u00E9cnico");
-			radioButton_1.setBackground(SystemColor.info);
+			radioButton_1.setBackground(new Color(255, 250, 205));
 			radioButton_1.setBounds(336, 107, 109, 23);
 			panel.add(radioButton_1);
 			
 			JRadioButton radioButton_2 = new JRadioButton("Obrero");
-			radioButton_2.setBackground(SystemColor.info);
+			radioButton_2.setBackground(new Color(255, 250, 205));
 			radioButton_2.setBounds(460, 107, 109, 23);
 			panel.add(radioButton_2);
 			
@@ -177,7 +179,7 @@ public class NuevaVacante extends JDialog {
 			
 			JComboBox comboBox_3 = new JComboBox();
 			comboBox_3.setModel(new DefaultComboBoxModel(new String[] {"Cualquiera", "Femenino", "Masculino"}));
-			comboBox_3.setBounds(213, 306, 116, 20);
+			comboBox_3.setBounds(213, 306, 120, 23);
 			panel.add(comboBox_3);
 			
 			JLabel lblGeneroPredilecto = new JLabel("Genero predilecto");
@@ -189,12 +191,13 @@ public class NuevaVacante extends JDialog {
 			panel.add(lblCiudad);
 			
 			textField_2 = new JTextField();
-			textField_2.setBounds(404, 306, 116, 20);
+			textField_2.setBounds(404, 306, 120, 23);
 			panel.add(textField_2);
 			textField_2.setColumns(10);
 		}
 		{
 			JPanel buttonPane = new JPanel();
+			buttonPane.setBorder(new TitledBorder(null, "", TitledBorder.LEADING, TitledBorder.TOP, null, null));
 			buttonPane.setBackground(new Color(255, 255, 204));
 			buttonPane.setLayout(new FlowLayout(FlowLayout.RIGHT));
 			getContentPane().add(buttonPane, BorderLayout.SOUTH);
@@ -244,7 +247,7 @@ public class NuevaVacante extends JDialog {
 				getRootPane().setDefaultButton(okButton);
 			}
 			{
-				JButton cancelButton = new JButton("Cancel");
+				JButton cancelButton = new JButton("Cancelar");
 				cancelButton.setActionCommand("Cancel");
 				buttonPane.add(cancelButton);
 			}
