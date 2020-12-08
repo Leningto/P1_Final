@@ -14,6 +14,7 @@ public class BolsaLaboral {
 	private static int CodEmpresa;
 	private static int codVacante;
 	private static int codCurriculums;
+	private String lol;
 
 	public BolsaLaboral() {
 		super();

@@ -5,6 +5,7 @@ public class Curriculum {// =solicitud;
 	private String cedula;
 	private String nombre;
 	private String Sexo, Puesto_de_trajo, idioma, direccion, sueldo_ideal, licencia_conducir, Tipo_empleo;
+	private String lol;
 
 	public Curriculum(String codigoSolicitud, String cedula, String nombre, String sexo, String puesto_de_trajo,
 			String idioma, String direccion, String sueldo_ideal, String licencia_conducir, String tipo_empleo) {

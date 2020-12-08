@@ -6,6 +6,7 @@ public abstract class Persona {
 	protected ArrayList<Curriculum> curriculum;
 	protected String Nombre, Cedula, telefono, direccion, nacionalidad;
 	protected boolean estado;// contratado
+	private String lol;
 
 	public Persona(String nombre, String cedula, String telefono, String direccion, boolean estado,
 			String nacionalidad) {

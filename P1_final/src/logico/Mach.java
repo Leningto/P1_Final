@@ -3,6 +3,7 @@ package logico;
 public class Mach {
 	private Curriculum aux;
 	private int idice;
+	private String lol;
 
 	public Mach(Curriculum aux, int idice) {
 		super();

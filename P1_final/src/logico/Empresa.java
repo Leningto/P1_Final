@@ -5,7 +5,7 @@ import java.util.ArrayList;
 public class Empresa {
 	private String codigo, nombre, telefono, direccion, nombreCEO, RNC;
 	private ArrayList<Vacante> vacantes;
-
+	private String lol;
 	public Empresa(String codigo, String nombre, String telefono, String direccion, String nombreCEO, String RNC) {
 		super();
 		this.codigo = codigo;

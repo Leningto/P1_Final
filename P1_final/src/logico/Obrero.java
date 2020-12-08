@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 public class Obrero extends Persona {
 	private String Habilidades;/* habilidades : plomero, electricista,carpintero,construcctor */
+	private String lol;
 
 	
 	public Obrero(String nombre, String cedula, String telefono, String direccion, boolean estado, String nacionalidad,

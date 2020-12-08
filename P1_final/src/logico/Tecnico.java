@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 public class Tecnico extends Persona {
 	private String area_desarrollo; /* area en la que se desarrolla */
+	private String lol;
 
 	
 

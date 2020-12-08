@@ -6,6 +6,7 @@ public abstract class Vacante {
 	private String tipo_de_empleo;
 	private String idioma;
 	private String licenciaConducir, direccion, Sexo;
+	private String lol;
 
 	public Vacante(String codigoSoli, String puesto_trabajo, String tipo_de_empleo, String idioma,
 			String licenciaConducir, String direccion, String sexo) {

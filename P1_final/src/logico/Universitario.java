@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 public class Universitario extends Persona {
 	private String carreraUniv;
+	private String lol;
 
 	public Universitario(String nombre, String cedula, String telefono, String direccion, boolean estado,
 			String nacionalidad, String carreraUniv) {

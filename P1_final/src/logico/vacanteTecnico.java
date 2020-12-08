@@ -2,6 +2,7 @@ package logico;
 
 public class vacanteTecnico extends Vacante {
 	private String area_desarrollo;
+	private String lol;
 
 	public vacanteTecnico(String codigoSoli, String puesto_trabajo, String tipo_de_empleo, String idioma,
 			String licenciaConducir, String direccion, String sexo, String area_desarrollo) {
